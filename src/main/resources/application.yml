@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: webServer
+  datasource:
+    url: jdbc:mysql://localhost:3306/martial?useSSL=false
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+server:
+    port: 9090
