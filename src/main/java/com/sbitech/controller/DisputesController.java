@@ -2,6 +2,7 @@ package com.sbitech.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.sbitech.dto.DisputesQueryDTO;
+import com.sbitech.vo.DisputesDetailVO;
 import com.sbitech.vo.DisputesVO;
 import com.sbitech.service.DisputesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +20,10 @@ public class DisputesController {
     public PageInfo<DisputesVO> getDisputesList(@RequestBody DisputesQueryDTO queryDTO) {
         return disputesService.getDisputesByCondition(queryDTO);
     }
+
+    @GetMapping("detail/{id}")
+    public DisputesDetailVO getDisputesDetail(@PathVariable("id") Long id) {
+        return disputesService.getDisputesDetail(id);
+    }
+
 }

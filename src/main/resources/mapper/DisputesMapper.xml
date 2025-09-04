@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sbitech.mapper.DisputesMapper">
+
     <select id="disputesPage" resultType="com.sbitech.vo.DisputesVO">
-        SELECT d.*,e.category
+        SELECT d.id,d.play_match_id,d.title,d.evidence_url,d.status,d.create_time,d.review_time,e.category
         FROM disputes d
         LEFT JOIN player_matches pm ON d.play_match_id = pm.id
         LEFT JOIN events e ON pm.events_id = e.id
@@ -23,4 +24,19 @@
         </where>
         ORDER BY d.id DESC
     </select>
+
+    <select id="getDisputesDetail" resultType="com.sbitech.vo.DisputesDetailVO">
+        select d.id,d.play_match_id,d.title,d.reason,d.evidence_url,d.status,d.review_opinion,d.create_time,d.review_time,
+               e.name,e.category,
+               s.score,
+               u.realName
+        from disputes d
+        left join player_matches p on d.play_match_id=p.id
+        left join events e on p.events_id=e.id
+        left join scores s on s.player_match_id=p.id
+        left join user u on u.id=p.user_id
+        where d.id=#{id};
+    </select>
+
+
 </mapper>

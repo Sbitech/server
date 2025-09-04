@@ -1,6 +1,7 @@
 package com.sbitech.mapper;
 
 import com.sbitech.entity.Disputes;
+import com.sbitech.vo.DisputesDetailVO;
 import com.sbitech.vo.DisputesVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -14,4 +15,6 @@ public interface DisputesMapper {
                                   @Param("endTime") Date endTime,
                                   @Param("eventCategory") String eventCategory,
                                   @Param("status") String status);
+
+    DisputesDetailVO getDisputesDetail(Long id);
 }
