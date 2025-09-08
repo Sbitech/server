@@ -21,4 +21,4 @@ logging:
     com.sbitech.mapper: debug
 
 server:
-    port: 9091
+    port: 9090
