@@ -3,6 +3,25 @@
 
 <mapper namespace="com.sbitech.mapper.DisputesMapper">
 
+    <update id="updateDisputesStatus1">
+        UPDATE disputes d
+            left join player_matches p on d.play_match_id = p.id
+            left join scores s on s.player_match_id = p.id
+        SET d.status         = #{status},
+            d.review_opinion = #{reviewOpinion},
+            d.review_time    = NOW(),
+            s.score=#{score}
+        WHERE d.id = #{id};
+    </update>
+
+    <update id="updateDisputesStatus2">
+        UPDATE disputes
+        SET status      = #{status},
+            review_opinion = #{reviewOpinion},
+            review_time = NOW()
+        WHERE id = #{id};
+    </update>
+
     <select id="disputesPage" resultType="com.sbitech.vo.DisputesVO">
         SELECT d.id,d.play_match_id,d.title,d.evidence_url,d.status,d.create_time,d.review_time,e.category
         FROM disputes d
@@ -29,7 +48,7 @@
         select d.id,d.play_match_id,d.title,d.reason,d.evidence_url,d.status,d.review_opinion,d.create_time,d.review_time,
                e.name,e.category,
                s.score,
-               u.realName
+               u.real_name
         from disputes d
         left join player_matches p on d.play_match_id=p.id
         left join events e on p.events_id=e.id

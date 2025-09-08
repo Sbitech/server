@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 public class DisputesVO {
     private Long id;    //id
     private Long playMatchId; //比赛记录id
-    private Long title; //申诉标题
+    private String title; //申诉标题
     private String evidenceUrl; //证据材料url
     private String status; //申诉状态（1:待处理、2:已处理、3:驳回）
     private Timestamp createTime; //创建时间

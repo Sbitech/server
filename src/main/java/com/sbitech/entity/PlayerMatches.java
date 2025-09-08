@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class playerMatches {    //参赛记录表
+public class PlayerMatches {    //参赛记录表
     private Long id;    // 主键ID
     private Long eventId;   // 项目ID
     private Long userId;    // 参赛者ID

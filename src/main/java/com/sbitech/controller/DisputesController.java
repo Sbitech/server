@@ -26,4 +26,13 @@ public class DisputesController {
         return disputesService.getDisputesDetail(id);
     }
 
+    @PutMapping("update/{id}")
+    public Boolean updateDisputesStatus(
+            @PathVariable("id") Long id,
+            @RequestParam("reviewOpinion") String reviewOpinion,
+            @RequestParam(value = "score", required = false) Float score,
+            @RequestParam("status") String status) {
+        return disputesService.updateDisputesStatus(id, reviewOpinion, score, status);
+    }
+
 }

@@ -17,4 +17,8 @@ public interface DisputesMapper {
                                   @Param("status") String status);
 
     DisputesDetailVO getDisputesDetail(Long id);
+
+    Integer updateDisputesStatus1(Long id, String reviewOpinion, Float score, String status);
+
+    Integer updateDisputesStatus2(Long id, String reviewOpinion, String status);
 }

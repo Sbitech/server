@@ -34,4 +34,15 @@ public class DisputesServiceImpl implements DisputesService {
     public DisputesDetailVO getDisputesDetail(Long id) {    //获取详情数据
         return disputesMapper.getDisputesDetail(id);
     }
+
+    @Override
+    public Boolean updateDisputesStatus(Long id, String reviewOpinion, Float score, String status) {    //更新申诉状态
+        Integer rows = 0;
+        if(status.equals("1")){
+            rows = disputesMapper.updateDisputesStatus1(id, reviewOpinion, score, status);
+        }else{
+            rows = disputesMapper.updateDisputesStatus2(id, reviewOpinion, status);
+        }
+        return rows != null && rows > 0;
+    }
 }

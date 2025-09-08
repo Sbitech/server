@@ -9,4 +9,6 @@ public interface DisputesService {
     PageInfo<DisputesVO> getDisputesByCondition(DisputesQueryDTO queryDTO);
 
     DisputesDetailVO getDisputesDetail(Long id);
+
+    Boolean updateDisputesStatus(Long id, String reviewOpinion, Float score, String status);
 }
