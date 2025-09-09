@@ -32,6 +32,7 @@ public class DisputesController {
             @RequestParam("reviewOpinion") String reviewOpinion,
             @RequestParam(value = "score", required = false) Float score,
             @RequestParam("status") String status) {
+        System.out.println(reviewOpinion);
         return disputesService.updateDisputesStatus(id, reviewOpinion, score, status);
     }
 
