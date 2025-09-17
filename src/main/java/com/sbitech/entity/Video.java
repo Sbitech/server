@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class video {    //录像实体类
+public class Video {    //录像实体类
 
     private Long id;    // 主键ID
     private Long userId;    //参与者ID

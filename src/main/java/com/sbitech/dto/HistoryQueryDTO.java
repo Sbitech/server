@@ -11,9 +11,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class DisputesQueryDTO {
-    private Integer pageNum = 1;
-    private Integer pageSize = 10;
+public class HistoryQueryDTO {
+
+    private Integer pageNum=1;
+    private Integer pageSize=5;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT+8")
     private Timestamp startTime;
@@ -21,6 +22,7 @@ public class DisputesQueryDTO {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT+8")
     private Timestamp endTime;
 
-    private String eventCategory;  // 项目类型
-    private String status; // 申诉状态
+    private String name;  // 选手姓名
+    private String category; // 比赛类型
+
 }

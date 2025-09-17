@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbitech.mapper.HistoryMapper">
+
+
+    <select id="historyPage" resultType="com.sbitech.vo.HistoryVO">
+        select
+            p.id,p.events_id,p.user_id,p.user_id,p.player_number,p.status,p.time,
+            u.username,u.real_name,u.team,u.phone,
+            e.category,e.rules,
+            s.score
+        from player_matches p
+        left join user u on p.user_id = u.id
+        left join events e on p.events_id = e.id
+        left join scores s on s.player_match_id=p.id
+        <where>
+            <if test="startTime != null">
+                AND p.time >= #{startTime}
+            </if>
+            <if test="endTime != null">
+                AND p.time &lt;= #{endTime}
+            </if>
+            <if test="category != null and category != ''">
+                AND e.category = #{category}
+            </if>
+            <if test="name != null and name != ''">
+                AND u.real_name = #{name}
+            </if>
+        </where>
+        ORDER BY p.time DESC
+    </select>
+</mapper>
