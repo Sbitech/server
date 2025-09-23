@@ -1,14 +1,19 @@
-spring:
-  application:
-    name: webServer
-  datasource:
-    url: jdbc:mysql://localhost:3306/martial?useSSL=false
-    username: root
-    password: 1234
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jackson:
-    date-format: yyyy-MM-dd HH:mm
-    time-zone: GMT+8
+# Mysql
+
+#spring:
+#  application:
+#    name: webServer
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/martial?useSSL=false
+#    username: root
+#    password: 1234
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm
+#    time-zone: GMT+8
+
+# postgresql
+
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -22,3 +27,10 @@ logging:
 
 server:
     port: 9090
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/martial
+    username: postgres
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+

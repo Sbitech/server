@@ -10,7 +10,7 @@
             e.category,e.rules,
             s.score
         from player_matches p
-        left join user u on p.user_id = u.id
+        left join users u on p.user_id = u.id
         left join events e on p.events_id = e.id
         left join scores s on s.player_match_id=p.id
         <where>

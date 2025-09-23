@@ -1,7 +1,8 @@
 package com.sbitech.controller;
 
-import com.sbitech.entity.User;
-import com.sbitech.service.UserService;
+import com.sbitech.entity.Users;
+import com.sbitech.service.UsersService;
+import com.sbitech.service.UsersService;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,18 +12,18 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/user")
-public class UserController {
+public class UsersController {
     @Autowired
-    private UserService userService;
+    private UsersService userService;
 
     @GetMapping("/all")
-    public List<User> getUsers(){
+    public List<Users> getUsers(){
         return userService.getUsers();
     }
 
     @PostMapping("/login")
-    public User login(@RequestBody User user){
-        val login = userService.login(user);
+    public Users login(@RequestBody Users users){
+        val login = userService.login(users);
         if(login != null){
             login.setPassword(null);    //剔除敏感信息
             login.setNumberID(null);

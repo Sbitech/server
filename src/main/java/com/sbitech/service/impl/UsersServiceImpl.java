@@ -1,25 +1,27 @@
 package com.sbitech.service.impl;
 
-import com.sbitech.entity.User;
-import com.sbitech.mapper.UserMapper;
-import com.sbitech.service.UserService;
+import com.sbitech.entity.Users;
+import com.sbitech.mapper.UsersMapper;
+import com.sbitech.mapper.UsersMapper;
+import com.sbitech.service.UsersService;
+import com.sbitech.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UsersServiceImpl implements UsersService {
     @Autowired
-    private UserMapper userMapper;
+    private UsersMapper userMapper;
 
     @Override
-    public List<User> getUsers() {
+    public List<Users> getUsers() {
         return userMapper.getUsers();
     }
 
     @Override
-    public User login(User user) {
+    public Users login(Users user) {
         System.out.println(user);
         String username = user.getUsername();
         String password = user.getPassword();

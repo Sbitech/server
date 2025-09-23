@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class User { // 用户实体类
+public class Users { // 用户实体类
 
     private Long id;    // 主键ID
     private String username;    // 用户名
