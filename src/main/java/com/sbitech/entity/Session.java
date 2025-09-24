@@ -25,5 +25,6 @@ public class Session {  //会话实体类
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Timestamp endTime;      //结束时间
     private String status;          //状态（active/inactive）
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Timestamp createdAt;    //session创建时间
 }

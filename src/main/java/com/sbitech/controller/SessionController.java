@@ -5,6 +5,8 @@ import com.sbitech.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/session")
@@ -16,6 +18,13 @@ public class SessionController {
     @PostMapping("/generate")
     public String generateSession(@RequestBody Session session) {
         return sessionService.generateSession(session);
+    }
+
+    @GetMapping("/getSession")
+    public Session getSession(@RequestParam  UUID sessionToken) {
+//        UUID sessionUUID = UUID.fromString(sessionToken);
+        System.err.println("sessionToken: " + sessionToken);
+        return sessionService.getSession(sessionToken);
     }
 
 }

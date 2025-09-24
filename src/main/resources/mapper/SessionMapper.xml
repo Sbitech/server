@@ -9,4 +9,11 @@
         values (#{sessionToken}, #{userId}, #{userName}, #{routineId}, #{routineName}, #{eventId},
                 #{eventName}, #{startTime}, #{endTime}, #{status}, #{createdAt});
     </insert>
+
+    <select id="getSessionToken" resultType="com.sbitech.entity.Session">
+        select *
+        from session
+        where session_token = #{sessionToken}
+    </select>
+
 </mapper>

@@ -21,12 +21,18 @@ public class SessionServiceImpl implements SessionService {
     @Override
     public String generateSession(Session session) {
         session.setSessionToken(UUID.randomUUID()); //生成token UUID
+
         val format = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));    //获取当前时间
         val timestamp = Timestamp.valueOf(format);
         session.setCreatedAt(timestamp);
         System.err.println(session);
         sessionMapper.generateSession(session);
         return session.getSessionToken().toString();
+    }
+
+    @Override
+    public Session getSession(UUID sessionToken) {
+        return sessionMapper.getSessionToken(sessionToken);
     }
 
 }
