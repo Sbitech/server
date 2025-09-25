@@ -33,4 +33,7 @@ spring:
     username: postgres
     password: 1234
     driver-class-name: org.postgresql.Driver
-
+# 在spring配置下添加
+jwt:
+  secret: mySecretKeyForMartialArtsRefereeSystemShouldBeVeryLongAndSecure123456789
+  expiration: 86400000  # 24小时，单位毫秒

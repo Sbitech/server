@@ -8,5 +8,10 @@
         where username = #{username}
           and password = #{password};
     </select>
+    <select id="selectByUsername" resultType="com.sbitech.entity.Referee">
+        select *
+        from referee
+        where username = #{username};
+    </select>
 
 </mapper>
