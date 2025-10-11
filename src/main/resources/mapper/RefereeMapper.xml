@@ -8,10 +8,39 @@
         where username = #{username}
           and password = #{password};
     </select>
+    
     <select id="selectByUsername" resultType="com.sbitech.entity.Referee">
         select *
         from referee
         where username = #{username};
     </select>
+    
+    <!-- 根据用户名查询裁判信息，包含角色信息 -->
+    <select id="selectByUsernameWithRole" resultMap="refereeWithRoleResultMap">
+        SELECT 
+            r.id, r.username, r.password, r.name, r.phone, r.role_id, r.enabled,
+            role.id as role_id, role.role_name as role_role_name, role.description as role_description
+        FROM referee r
+        LEFT JOIN role ON r.role_id = role.id
+        WHERE r.username = #{username}
+    </select>
+    
+    <!-- 裁判包含角色的结果映射 -->
+    <resultMap id="refereeWithRoleResultMap" type="com.sbitech.entity.Referee">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="phone" column="phone"/>
+        <result property="roleId" column="role_id"/>
+        <result property="enabled" column="enabled"/>
+        
+        <!-- 角色信息映射 -->
+        <association property="role" javaType="com.sbitech.entity.Role">
+            <id property="id" column="role_id"/>
+            <result property="roleName" column="role_role_name"/>
+            <result property="description" column="role_description"/>
+        </association>
+    </resultMap>
 
 </mapper>

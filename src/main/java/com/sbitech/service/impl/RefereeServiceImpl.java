@@ -1,6 +1,8 @@
 package com.sbitech.service.impl;
 
+import com.sbitech.entity.Permission;
 import com.sbitech.entity.Referee;
+import com.sbitech.mapper.PermissionMapper;
 import com.sbitech.mapper.RefereeMapper;
 import com.sbitech.service.RefereeService;
 import lombok.val;
@@ -8,11 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RefereeServiceImpl implements RefereeService {
 
     @Autowired
     private RefereeMapper refereeMapper;
+
+    @Autowired
+    private PermissionMapper permissionMapper;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -33,5 +40,17 @@ public class RefereeServiceImpl implements RefereeService {
     @Override
     public Referee findByUsername(String username) {
         return refereeMapper.selectByUsername(username);
+    }
+    
+    @Override
+    public Referee findByUsernameWithPermissions(String username) {
+        // 查询裁判信息，包含角色信息
+        Referee referee = refereeMapper.selectByUsernameWithRole(username);
+        if (referee != null) {
+            // 查询裁判的权限列表
+            List<Permission> permissions = permissionMapper.findPermissionsByRefereeId(referee.getId());
+            referee.setPermissions(permissions);
+        }
+        return referee;
     }
 }
