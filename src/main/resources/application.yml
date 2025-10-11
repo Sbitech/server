@@ -29,8 +29,8 @@ server:
     port: 9090
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/martial
-    username: postgres
+    url: jdbc:postgresql://43.143.94.191:5432/martial
+    username: martial
     password: 1234
     driver-class-name: org.postgresql.Driver
 # 在spring配置下添加

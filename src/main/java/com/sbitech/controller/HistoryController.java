@@ -21,6 +21,7 @@ public class HistoryController {
 
     @PostMapping("/list")
     public PageInfo<HistoryVO> list(@RequestBody HistoryQueryDTO queryDTO){
+        System.out.println(1);
         return historyService.getHistoryByCondition(queryDTO);
     }
 
