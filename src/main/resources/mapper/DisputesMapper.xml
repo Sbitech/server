@@ -53,7 +53,7 @@
         left join player_matches p on d.play_match_id=p.id
         left join events e on p.events_id=e.id
         left join scores s on s.player_match_id=p.id
-        left join users u on u.id=p.user_id
+        left join player_info u on u.id=p.user_id
         where d.id=#{id};
     </select>
 

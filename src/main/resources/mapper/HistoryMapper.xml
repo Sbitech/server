@@ -6,11 +6,11 @@
     <select id="historyPage" resultType="com.sbitech.vo.HistoryVO">
         select
             p.id,p.events_id,p.user_id,p.user_id,p.player_number,p.status,p.time,
-            u.username,u.real_name,u.team,u.phone,
+            pli.username,pli.real_name,pli.team,pli.phone,
             e.category,e.rules,
             s.score
         from player_matches p
-        left join users u on p.user_id = u.id
+        left join player_info pli on p.user_id = pli.id
         left join events e on p.events_id = e.id
         left join scores s on s.player_match_id=p.id
         <where>

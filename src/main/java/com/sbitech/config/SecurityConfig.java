@@ -26,12 +26,12 @@ public class SecurityConfig {
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
-    @Bean
+    @Bean   //密码加密
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+    @Bean   //认证管理器
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
@@ -50,9 +50,10 @@ public class SecurityConfig {
                         .requestMatchers("/referee/**").hasAnyRole("REFEREE", "ADMIN")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         // 其他请求需要认证
-                        .anyRequest().authenticated()
-                )
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+//                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
+                );
+//                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

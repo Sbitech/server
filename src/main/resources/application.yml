@@ -29,9 +29,9 @@ server:
     port: 9090
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/martial
-    username: postgres
-    password: 1234
+    url: jdbc:postgresql://43.143.94.191:35432/aireferee
+    username: aireferee
+    password: aireferee
     driver-class-name: org.postgresql.Driver
 # 在spring配置下添加
 jwt:

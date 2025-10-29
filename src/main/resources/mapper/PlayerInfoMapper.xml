@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbitech.mapper.PlayerInfoMapper">
+
+    <select id="getUsers" resultType="com.sbitech.entity.PlayerInfo">
+        select *
+        from player_info;
+    </select>
+    <select id="isExist" resultType="com.sbitech.entity.PlayerInfo">
+        select *
+        from player_info
+        where username = #{username}
+          and password = #{password};
+    </select>
+
+    <update id="alertPW">
+        update player_info
+        set password = #{newPassword}
+        where username = #{username}
+          and password = #{oldPassword};
+    </update>
+</mapper>
