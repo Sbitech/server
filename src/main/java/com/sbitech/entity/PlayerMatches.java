@@ -16,4 +16,5 @@ public class PlayerMatches {    //参赛记录表
     private String playerNumber; // 参赛编号
     private Timestamp Time; //开始时间
     private String status;  //状态（0无争议 1有争议）
+    private String moveList; //招式列表
 }

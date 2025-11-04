@@ -1,11 +1,16 @@
 package com.sbitech.controller;
 
+import com.sbitech.dto.PlayerSkillInfoDTO;
 import com.sbitech.entity.PlayerMatches;
+import com.sbitech.service.PlayerMatchesService;
 import com.sbitech.utils.SimplePDFCreator;
 import lombok.val;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import static com.sbitech.utils.SimplePDFCreator.createSimplePDF;
 
@@ -13,6 +18,19 @@ import static com.sbitech.utils.SimplePDFCreator.createSimplePDF;
 @RestController
 @RequestMapping("/playerMatches")
 public class PlayerMatchesController {
+
+    @Autowired
+    private PlayerMatchesService playerMatchesService;
+
+    @GetMapping("/getAll")
+    public List<PlayerMatches> getAll(){
+        return  playerMatchesService.getAll();
+    }
+
+    @GetMapping("/getPlayerMoveById")
+    public List<PlayerSkillInfoDTO> getMoveInfoById(Long eventId){
+        return playerMatchesService.getPlayerMoveById(eventId);
+    }
 
     @GetMapping("/createPDF")
     public String createPDF(String id) {  //前端发送赛事id生成pdf

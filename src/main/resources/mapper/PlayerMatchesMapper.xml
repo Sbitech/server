@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbitech.mapper.PlayerMatchesMapper">
+
+    <select id="getAll" resultType="com.sbitech.entity.PlayerMatches">
+
+        select * from player_matches;
+
+    </select>
+
+    <select id="getByUserId" resultType="com.sbitech.entity.PlayerMatches">
+        select * from player_matches where user_id = #{id};
+    </select>
+</mapper>

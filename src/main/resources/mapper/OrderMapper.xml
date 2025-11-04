@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbitech.mapper.OrderMapper">
+
+    <select id="getRankingByEventId" resultType="com.sbitech.entity.PlayerInfo">
+        select p.id,p.real_name from "order" o
+        left join player_info p on p.id=o.player_id
+        where o.event_id=#{eventId}
+        order by o.ranking asc;
+    </select>
+</mapper>
