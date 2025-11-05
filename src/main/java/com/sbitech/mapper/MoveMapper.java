@@ -9,5 +9,7 @@ import java.util.List;
 public interface MoveMapper {
     List<Move> getAll();
 
+    String getMoveListByPlayerMatchesId(Long playerMatchesId);
+
     Float getByCode(String key);
 }

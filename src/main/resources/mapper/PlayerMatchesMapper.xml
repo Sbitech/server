@@ -11,4 +11,32 @@
     <select id="getByUserId" resultType="com.sbitech.entity.PlayerMatches">
         select * from player_matches where user_id = #{id};
     </select>
+
+    <select id="getPlayerMatchesById" resultType="com.sbitech.dto.PlayerMatchesDTO">
+        select pm.id as player_matches_id,
+               pm.time as match_time,
+               e.name as event_name,
+               e.category as event_category,
+               pif.id as player_info_id,
+               pif.real_name,
+               pif.team_name,v.file_url,v.uploaded_time
+        from player_matches pm
+                 left join events e on pm.events_id = e.id
+                 left join player_info pif on pm.user_id = pif.id
+                 left join video v on pm.video_id = v.id
+        where pm.id = #{id};
+    </select>
+
+    <select id="getAllPlayerMatch" resultType="com.sbitech.dto.PlayerMatchInfoDTO">
+        select pm.id        as player_matches_id,
+               pm.user_id   as player_id,
+               e.name       as event_name,
+               e.category   as event_category,
+               e.start_time as event_time,
+               pif.real_name,
+               pif.team_name
+        from player_matches pm
+                 left join events e on pm.events_id = e.id
+                 left join player_info pif on pm.user_id = pif.id
+    </select>
 </mapper>

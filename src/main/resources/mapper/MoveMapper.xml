@@ -6,7 +6,15 @@
         select * from move;
     </select>
 
+
+
     <select id="getByCode" resultType="java.lang.Float">
         select score from move where code=#{code};
+    </select>
+
+    <select id="getMoveListByPlayerMatchesId" resultType="java.lang.String">
+        select move_list
+        from player_matches
+        where id = #{playerMatchesId}
     </select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.sbitech.service;
 
+import com.sbitech.dto.PlayerMatchInfoDTO;
+import com.sbitech.dto.PlayerMatchesDTO;
 import com.sbitech.dto.PlayerSkillInfoDTO;
 import com.sbitech.entity.PlayerMatches;
 
@@ -12,4 +14,8 @@ public interface PlayerMatchesService {
     PlayerMatches getById(Long id);
 
     List<PlayerSkillInfoDTO> getPlayerMoveById(Long eventId);
+
+    PlayerMatchesDTO getPlayerMatchesById(Long id);
+
+    List<PlayerMatchInfoDTO> getAllPlayerMatch();
 }
