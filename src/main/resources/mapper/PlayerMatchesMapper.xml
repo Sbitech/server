@@ -13,13 +13,15 @@
     </select>
 
     <select id="getPlayerMatchesById" resultType="com.sbitech.dto.PlayerMatchesDTO">
-        select pm.id as player_matches_id,
-               pm.time as match_time,
-               e.name as event_name,
+        select pm.id      as player_matches_id,
+               pm.time    as match_time,
+               e.name     as event_name,
                e.category as event_category,
-               pif.id as player_info_id,
+               pif.id     as player_info_id,
                pif.real_name,
-               pif.team_name,v.file_url,v.uploaded_time
+               pif.team_name,
+               v.file_url,
+               v.uploaded_time
         from player_matches pm
                  left join events e on pm.events_id = e.id
                  left join player_info pif on pm.user_id = pif.id

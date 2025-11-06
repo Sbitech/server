@@ -17,4 +17,8 @@
         from player_matches
         where id = #{playerMatchesId}
     </select>
+
+    <select id="getAllMoves" resultType="com.sbitech.entity.Move">
+        select code, score from move;
+    </select>
 </mapper>

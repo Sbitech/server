@@ -5,28 +5,28 @@
 
     <select id="historyPage" resultType="com.sbitech.vo.HistoryVO">
         select
-            p.id,p.events_id,p.user_id,p.user_id,p.player_number,p.status,p.time,
-            pli.username,pli.real_name,pli.team,pli.phone,
-            e.category,e.rules,
-            s.score
-        from player_matches p
-        left join player_info pli on p.user_id = pli.id
-        left join events e on p.events_id = e.id
-        left join scores s on s.player_match_id=p.id
+        pm.id,pm.events_id,pm.user_id,pm.player_number,pm.status,pm.time,
+        pli.username,pli.real_name,pli.team,pli.phone,
+        e.category,e.rules,
+        s.score
+        from player_matches pm
+        left join player_info pli on pm.user_id = pli.id
+        left join events e on pm.events_id = e.id
+        left join scores s on s.player_match_id=pm.id
         <where>
             <if test="startTime != null">
-                AND p.time >= #{startTime}
+                AND pm.time >= #{startTime}
             </if>
             <if test="endTime != null">
-                AND p.time &lt;= #{endTime}
+                AND pm.time &lt;= #{endTime}
             </if>
             <if test="category != null and category != ''">
                 AND e.category = #{category}
             </if>
             <if test="name != null and name != ''">
-                AND u.real_name = #{name}
+                AND pli.real_name = #{name}
             </if>
         </where>
-        ORDER BY p.time DESC
+        ORDER BY pm.time DESC
     </select>
 </mapper>

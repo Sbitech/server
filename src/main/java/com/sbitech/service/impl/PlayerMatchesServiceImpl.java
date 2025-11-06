@@ -3,6 +3,7 @@ package com.sbitech.service.impl;
 import com.sbitech.dto.PlayerMatchInfoDTO;
 import com.sbitech.dto.PlayerMatchesDTO;
 import com.sbitech.dto.PlayerSkillInfoDTO;
+import com.sbitech.entity.Move;
 import com.sbitech.entity.PlayerInfo;
 import com.sbitech.entity.PlayerMatches;
 import com.sbitech.entity.Scores;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class PlayerMatchesServiceImpl implements PlayerMatchesService {
@@ -43,20 +45,30 @@ public class PlayerMatchesServiceImpl implements PlayerMatchesService {
         List<PlayerSkillInfoDTO> matchInfo = new LinkedList<>();
         List<PlayerInfo> playerInfos = orderMapper.getRankingByEventId(eventId);
 
+        Map<String, Float> moveScoreCache = moveMapper.getAllMoves().stream()
+                .collect(Collectors.toMap(Move::getCode, Move::getScore));
+
         for (PlayerInfo playerInfo : playerInfos) {
-            val playerSkillInfoDTO = new PlayerSkillInfoDTO();
-            playerSkillInfoDTO.setPlayerId(playerInfo.getId());
-            playerSkillInfoDTO.setPlayerName(playerInfo.getRealName());
+            PlayerSkillInfoDTO dto = new PlayerSkillInfoDTO();
+            dto.setPlayerId(playerInfo.getId());
+            dto.setPlayerName(playerInfo.getRealName());
 
             Map<String, Float> moveScoreMap = new LinkedHashMap<>();
-            val playerMatches = playerMatchesMapper.getByUserId(playerInfo.getId());
-            val moveList = playerMatches.getMoveList().split(",");
+            PlayerMatches playerMatches = playerMatchesMapper.getByUserId(playerInfo.getId());
+            if (playerMatches == null || playerMatches.getMoveList() == null) {
+                matchInfo.add(dto);
+                continue;
+            }
+
+            String[] moveList = playerMatches.getMoveList().split(",");
             for (String key : moveList) {
-                val score = moveMapper.getByCode(key);
+                // 从缓存 Map 中直接取分数，避免数据库查询
+                Float score = moveScoreCache.getOrDefault(key, 0f);
                 moveScoreMap.put(key, score);
             }
-            playerSkillInfoDTO.setSkills(moveScoreMap);
-            matchInfo.add(playerSkillInfoDTO);
+
+            dto.setSkills(moveScoreMap);
+            matchInfo.add(dto);
         }
         return matchInfo;
     }
