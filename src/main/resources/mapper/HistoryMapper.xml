@@ -5,9 +5,19 @@
 
     <select id="historyPage" resultType="com.sbitech.vo.HistoryVO">
         select
-        pm.id,pm.events_id,pm.user_id,pm.player_number,pm.status,pm.time,
-        pli.username,pli.real_name,pli.team,pli.phone,
-        e.category,e.rules,
+        pm.id,
+        pm.events_id,
+        pm.user_id,
+        pm.player_number,
+        pm.status,
+        pm.time,
+        pli.username,
+        pli.real_name,
+        pli.team,
+        pli.phone,
+        e.category,
+        e.rules,
+        e.name as event_name,
         s.score
         from player_matches pm
         left join player_info pli on pm.user_id = pli.id

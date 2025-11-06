@@ -7,4 +7,10 @@
         from scores
         where id = #{playerMatchesId}
     </select>
+
+    <update id="updateScore">
+        update scores
+        set score = #{score}
+        where player_match_id = #{playerMatchId}
+    </update>
 </mapper>

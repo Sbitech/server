@@ -23,6 +23,7 @@ public class HistoryVO {
 
     //events    项目信息
     private String category;
+    private String eventName;
     private String rules;
 
     //scores    成绩
