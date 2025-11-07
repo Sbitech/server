@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class UpdateScoreDTO {
 
     private Long playerMatchId;
-    private String score;
+    private String scoreListC;
+    private Float scoreC = 0F;
 
 }

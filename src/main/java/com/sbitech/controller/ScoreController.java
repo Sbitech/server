@@ -1,5 +1,6 @@
 package com.sbitech.controller;
 
+import com.sbitech.dto.AllScoresDTO;
 import com.sbitech.dto.UpdateScoreDTO;
 import com.sbitech.service.ScoresService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,11 @@ public class ScoreController {
         return scoresService.updateScore(updateScoreDTO);
 
     }
+
+    @GetMapping("/getAllScores")
+    public AllScoresDTO getAllScores(Long playerMatchId) {
+        return scoresService.getAllScores(playerMatchId);
+    }
+
 
 }

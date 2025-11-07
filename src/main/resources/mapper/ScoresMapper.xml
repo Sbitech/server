@@ -3,14 +3,39 @@
 <mapper namespace="com.sbitech.mapper.ScoresMapper">
 
     <select id="getScoresByPlayerMatchesId" resultType="java.lang.String">
-        select score
+        select score_list_c
         from scores
         where id = #{playerMatchesId}
     </select>
 
     <update id="updateScore">
         update scores
-        set score = #{score}
+        set score_list_c = #{scoreListC},
+            score_c = #{scoreC}
         where player_match_id = #{playerMatchId}
     </update>
+
+    <select id="getAllScoresByPlayerMatchId" resultType="com.sbitech.dto.AllScoresDTO">
+        select s.score_list_c as scoresOfC
+             , pif.real_name  as playerName
+             , e.name         as eventName
+             , e.id           as eventId
+        from scores s
+                 left join player_matches pm on s.player_match_id = pm.id
+                 left join player_info pif on pm.user_id = pif.id
+                 left join events e on pm.events_id = e.id
+        where player_match_id = #{playerMatchId}
+          and pm.events_id = events_id
+    </select>
+
+
+    <select id="getRankingByPlayerMatchId" resultType="java.lang.Long">
+        select pm.id
+        from scores s
+                 left join player_matches pm on s.player_match_id = pm.id
+                 left join player_info pif on pm.user_id = pif.id
+                 left join events e on pm.events_id = e.id
+        where pm.events_id = #{eventId}
+        ORDER BY s.score_c DESC
+    </select>
 </mapper>
