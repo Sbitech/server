@@ -36,8 +36,8 @@ public class PlayerMatchesServiceImpl implements PlayerMatchesService {
     }
 
     @Override
-    public PlayerMatches getById(Long id) {
-        return playerMatchesMapper.getByUserId(id);
+    public PlayerMatches getById(Long eventId,Long id) {
+        return playerMatchesMapper.getByUserId(eventId,id);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class PlayerMatchesServiceImpl implements PlayerMatchesService {
             dto.setPlayerName(playerInfo.getRealName());
 
             Map<String, Float> moveScoreMap = new LinkedHashMap<>();
-            PlayerMatches playerMatches = playerMatchesMapper.getByUserId(playerInfo.getId());
+            PlayerMatches playerMatches = playerMatchesMapper.getByUserId(eventId,playerInfo.getId());
             if (playerMatches == null || playerMatches.getMoveList() == null) {
                 matchInfo.add(dto);
                 continue;

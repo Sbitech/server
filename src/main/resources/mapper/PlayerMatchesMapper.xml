@@ -9,7 +9,7 @@
     </select>
 
     <select id="getByUserId" resultType="com.sbitech.entity.PlayerMatches">
-        select * from player_matches where user_id = #{id};
+        select * from player_matches where user_id = #{id} and events_id=#{eventId};
     </select>
 
     <select id="getPlayerMatchesById" resultType="com.sbitech.dto.PlayerMatchesDTO">

@@ -11,7 +11,7 @@ import java.util.List;
 public interface PlayerMatchesMapper {
     List<PlayerMatches> getAll();
 
-    PlayerMatches getByUserId(Long id);
+    PlayerMatches getByUserId(Long eventId,Long id);
 
     PlayerMatchesDTO getPlayerMatchesById(Long id);
 

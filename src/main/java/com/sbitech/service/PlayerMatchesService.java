@@ -11,7 +11,7 @@ import java.util.Map;
 public interface PlayerMatchesService {
     List<PlayerMatches> getAll();
 
-    PlayerMatches getById(Long id);
+    PlayerMatches getById(Long eventId,Long id);
 
     List<PlayerSkillInfoDTO> getPlayerMoveById(Long eventId);
 
