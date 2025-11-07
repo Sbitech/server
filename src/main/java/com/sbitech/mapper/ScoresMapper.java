@@ -16,4 +16,6 @@ public interface ScoresMapper {
     AllScoresDTO getAllScoresByPlayerMatchId(Long playerMatchId);
 
     List<Long> getRankingByPlayerMatchId(Long eventId);
+
+    String getScoreByPlayerMatchesId(Long eventId,Long playerId);
 }

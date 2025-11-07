@@ -56,4 +56,9 @@ public class ScoresServiceImpl implements ScoresService {
 
         return allScoresDTO;
     }
+
+    @Override
+    public String getScoreByPlayerMatchesId(Long eventId,Long playerId) {
+        return scoresMapper.getScoreByPlayerMatchesId(eventId,playerId);
+    }
 }

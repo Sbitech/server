@@ -2,6 +2,7 @@ package com.sbitech.controller;
 
 import com.sbitech.dto.AllScoresDTO;
 import com.sbitech.dto.UpdateScoreDTO;
+import com.sbitech.entity.Scores;
 import com.sbitech.service.ScoresService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,11 @@ public class ScoreController {
     @GetMapping("/getAllScores")
     public AllScoresDTO getAllScores(Long playerMatchId) {
         return scoresService.getAllScores(playerMatchId);
+    }
+
+    @GetMapping("getScoreByPlayerMatchesId")
+    public String getScoreByPlayerMatchesId(Long eventId,Long playerId) {
+        return scoresService.getScoreByPlayerMatchesId(eventId,playerId);
     }
 
 

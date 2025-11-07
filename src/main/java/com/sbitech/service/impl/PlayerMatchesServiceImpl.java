@@ -41,40 +41,41 @@ public class PlayerMatchesServiceImpl implements PlayerMatchesService {
     }
 
     @Override
-    public List<PlayerSkillInfoDTO> getPlayerMoveById(Long eventId) {
-        List<PlayerSkillInfoDTO> matchInfo = new LinkedList<>();
-        List<PlayerInfo> playerInfos = orderMapper.getRankingByEventId(eventId);
+    public List<PlayerSkillInfoDTO> getPlayerMoveById(Long eventId) {   //通过赛事id获取选手出场顺序和选手的招式列表以及招式分数
 
-        Map<String, Float> moveScoreCache = moveMapper.getAllMoves().stream()
+        List<PlayerSkillInfoDTO> matchInfo = new LinkedList<>();
+
+        List<PlayerInfo> playerInfos = orderMapper.getRankingByEventId(eventId);    //获取该赛事的选手出场顺序
+
+        Map<String, Float> moveScoreCache = moveMapper.getAllMoves().stream()   //获取所有动作及其分数，缓存进 Map
                 .collect(Collectors.toMap(Move::getCode, Move::getScore));
 
-        for (PlayerInfo playerInfo : playerInfos) {
+        for (PlayerInfo playerInfo : playerInfos) { //遍历选手列表
             PlayerSkillInfoDTO dto = new PlayerSkillInfoDTO();
             dto.setPlayerId(playerInfo.getId());
             dto.setPlayerName(playerInfo.getRealName());
 
             Map<String, Float> moveScoreMap = new LinkedHashMap<>();
-            PlayerMatches playerMatches = playerMatchesMapper.getByUserId(eventId,playerInfo.getId());
+            PlayerMatches playerMatches = playerMatchesMapper.getByUserId(eventId,playerInfo.getId());  //把选手对应的比赛动作取出来
             if (playerMatches == null || playerMatches.getMoveList() == null) {
                 matchInfo.add(dto);
                 continue;
             }
 
             String[] moveList = playerMatches.getMoveList().split(",");
-            for (String key : moveList) {
-                // 从缓存 Map 中直接取分数，避免数据库查询
+            for (String key : moveList) {   //遍历选手的动作列表
                 Float score = moveScoreCache.getOrDefault(key, 0f);
                 moveScoreMap.put(key, score);
             }
 
-            dto.setSkills(moveScoreMap);
+            dto.setSkills(moveScoreMap);    //把选手的动作和对应分数放进 dto
             matchInfo.add(dto);
         }
         return matchInfo;
     }
 
     @Override
-    public PlayerMatchesDTO getPlayerMatchesById(Long id) {
+    public PlayerMatchesDTO getPlayerMatchesById(Long id) { //通过比赛场次id获取选手比赛的招式和对应的成绩
 
         PlayerMatchesDTO playerMatches = playerMatchesMapper.getPlayerMatchesById(id);
         val moveList = moveMapper.getMoveListByPlayerMatchesId(playerMatches.getPlayerMatchesId());

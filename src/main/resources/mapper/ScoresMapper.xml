@@ -38,4 +38,11 @@
         where pm.events_id = #{eventId}
         ORDER BY s.score_c DESC
     </select>
+
+    <select id="getScoreByPlayerMatchesId" resultType="java.lang.String">
+        select score_list_c
+        from scores s
+                 left join player_matches pm on s.player_match_id = pm.id
+        where pm.events_id = #{eventId} and pm.user_id=#{playerId}
+    </select>
 </mapper>
