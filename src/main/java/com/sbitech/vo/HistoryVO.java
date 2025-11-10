@@ -27,6 +27,6 @@ public class HistoryVO {
     private String rules;
 
     //scores    成绩
-    private String score;
+    private String scoreListC;
 
 }

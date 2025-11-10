@@ -18,7 +18,7 @@
         e.category,
         e.rules,
         e.name as event_name,
-        s.score
+        s.score_list_c
         from player_matches pm
         left join player_info pli on pm.user_id = pli.id
         left join events e on pm.events_id = e.id

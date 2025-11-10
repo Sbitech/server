@@ -1,6 +1,7 @@
 package com.sbitech.mapper;
 
 import com.sbitech.dto.AllScoresDTO;
+import com.sbitech.dto.RankingDTO;
 import com.sbitech.dto.UpdateScoreDTO;
 import com.sbitech.entity.Scores;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,4 +19,6 @@ public interface ScoresMapper {
     List<Long> getRankingByPlayerMatchId(Long eventId);
 
     String getScoreByPlayerMatchesId(Long eventId,Long playerId);
+
+    List<RankingDTO> getRanking(Long eventId);
 }

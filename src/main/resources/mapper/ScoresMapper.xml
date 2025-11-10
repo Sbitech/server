@@ -45,4 +45,16 @@
                  left join player_matches pm on s.player_match_id = pm.id
         where pm.events_id = #{eventId} and pm.user_id=#{playerId}
     </select>
+
+    <select id="getRanking" resultType="com.sbitech.dto.RankingDTO">
+        select s.score_c     as finalScore,
+               pif.real_name as playerName,
+               pm.user_id    as playerId,
+               pif.team_name as teamName
+        from scores s
+                 left join player_matches pm on s.player_match_id = pm.id
+                 left join player_info pif on pm.user_id = pif.id
+        where pm.events_id =#{eventId}
+        order by s.score_c desc
+    </select>
 </mapper>
