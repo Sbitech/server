@@ -3,9 +3,7 @@ package com.sbitech.mapper;
 import com.sbitech.dto.AllScoresDTO;
 import com.sbitech.dto.RankingDTO;
 import com.sbitech.dto.UpdateScoreDTO;
-import com.sbitech.entity.Scores;
 import org.apache.ibatis.annotations.Mapper;
-
 import java.util.List;
 
 @Mapper

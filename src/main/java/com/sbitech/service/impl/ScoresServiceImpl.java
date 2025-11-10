@@ -51,9 +51,9 @@ public class ScoresServiceImpl implements ScoresService {
         );
 
         List<Long> rankingList = scoresMapper.getRankingByPlayerMatchId(allScoresDTO.getEventId());
-        Integer ranking = rankingList.indexOf(allScoresDTO.getPlayerMatchId());
+        int ranking = rankingList.indexOf(allScoresDTO.getPlayerMatchId());
 
-        allScoresDTO.setRanking(5 + 1);
+        allScoresDTO.setRanking(ranking + 1);
 
         return allScoresDTO;
     }
@@ -66,8 +66,8 @@ public class ScoresServiceImpl implements ScoresService {
     @Override
     public List<RankingDTO> getRanking(Long eventId) {
         List<RankingDTO> rankingList = scoresMapper.getRanking(eventId);
-        for (RankingDTO rankingDTO : rankingList) { //通过成绩排序的查询设置名次
-            rankingDTO.setRanking(rankingList.indexOf(rankingDTO)+1);
+        for (RankingDTO rankingDTO : rankingList) { //通过成绩排序的查询设置名词
+            rankingDTO.setRanking(rankingList.indexOf(rankingDTO));
         }
         return rankingList;
     }

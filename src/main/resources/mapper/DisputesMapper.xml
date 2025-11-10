@@ -4,14 +4,15 @@
 <mapper namespace="com.sbitech.mapper.DisputesMapper">
 
     <update id="updateDisputesStatus1">
-        UPDATE disputes d
-            left join player_matches p on d.play_match_id = p.id
-            left join scores s on s.player_match_id = p.id
-        SET d.status         = #{status},
-            d.review_opinion = #{reviewOpinion},
-            d.review_time    = NOW(),
-            s.score=#{score}
-        WHERE d.id = #{id};
+        UPDATE disputes
+        SET status         = #{status},
+            review_opinion = #{reviewOpinion},
+            review_time    = NOW()
+        WHERE id = #{id};
+
+        update scores
+        set score_c = #{score}
+        where player_match_id = #{playMatchId};
     </update>
 
     <update id="updateDisputesStatus2">
