@@ -31,6 +31,11 @@ public class PlayerMatchesController {
         return playerMatchesService.getAllPlayerMatch();
     }
 
+    @GetMapping("getAllInfoByEventId")
+    public List<PlayerMatchInfoDTO> getAllInfoByEventId(Long eventId) {
+        return playerMatchesService.getAllInfoByEventId(eventId);
+    }
+
     @GetMapping("/getPlayerMoveById")   //通过比赛场次获取选手上场顺序和选手招式列表信息
     public List<PlayerSkillInfoDTO> getMoveInfoById(Long eventId) {
         return playerMatchesService.getPlayerMoveById(eventId);
@@ -40,7 +45,6 @@ public class PlayerMatchesController {
     public PlayerMatchesDTO getPlayerMatchesById(Long id) {
         return playerMatchesService.getPlayerMatchesById(id);
     }
-
 
     @GetMapping("/createPDF")
     public String createPDF(String id) {  //前端发送赛事id生成pdf
@@ -56,8 +60,5 @@ public class PlayerMatchesController {
             e.printStackTrace();
             return "null";
         }
-
-
     }
-
 }

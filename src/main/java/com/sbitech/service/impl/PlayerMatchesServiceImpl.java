@@ -97,4 +97,11 @@ public class PlayerMatchesServiceImpl implements PlayerMatchesService {
         return playerMatchesMapper.getAllPlayerMatch();
 
     }
+    @Override
+    public List<PlayerMatchInfoDTO> getAllInfoByEventId(Long eventId) {
+
+        System.out.println(playerMatchesMapper.getAllInfoByEventId(eventId));
+        return playerMatchesMapper.getAllInfoByEventId(eventId);
+
+    }
 }

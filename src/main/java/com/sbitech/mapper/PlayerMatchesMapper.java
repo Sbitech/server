@@ -17,4 +17,5 @@ public interface PlayerMatchesMapper {
 
     List<PlayerMatchInfoDTO> getAllPlayerMatch();
 
+    List<PlayerMatchInfoDTO> getAllInfoByEventId(Long eventId);
 }

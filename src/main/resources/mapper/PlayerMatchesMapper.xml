@@ -41,4 +41,18 @@
                  left join events e on pm.events_id = e.id
                  left join player_info pif on pm.user_id = pif.id
     </select>
+
+    <select id="getAllInfoByEventId" resultType="com.sbitech.dto.PlayerMatchInfoDTO">
+        select pm.id        as player_matches_id,
+               pm.user_id   as player_id,
+               e.name       as event_name,
+               e.category   as event_category,
+               e.start_time as event_time,
+               pif.real_name,
+               pif.team_name
+        from player_matches pm
+                 left join events e on pm.events_id = e.id
+                 left join player_info pif on pm.user_id = pif.id
+        where pm.events_id = #{eventId};
+    </select>
 </mapper>
