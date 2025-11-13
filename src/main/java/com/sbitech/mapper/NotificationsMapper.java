@@ -9,4 +9,6 @@ import java.util.List;
 public interface NotificationsMapper {
 
     List<Notifications> getNotifications(Long refereeId);
+
+    boolean markAsRead(Long notificationId);
 }

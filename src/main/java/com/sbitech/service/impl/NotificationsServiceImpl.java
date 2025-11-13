@@ -43,4 +43,12 @@ public class NotificationsServiceImpl implements NotificationsService {
         }
         return dto;
     }
+
+    @Override
+    public boolean markAsRead(Long notificationId) {
+        if(notificationsMapper.markAsRead(notificationId)){
+            return true;
+        }
+        return false;
+    }
 }

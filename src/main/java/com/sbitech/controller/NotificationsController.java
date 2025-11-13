@@ -4,10 +4,7 @@ import com.sbitech.dto.NotificationsDTO;
 import com.sbitech.entity.Notifications;
 import com.sbitech.service.NotificationsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +19,11 @@ public class NotificationsController {
     @GetMapping("getNotifications")
     public List<NotificationsDTO> getNotifications(Long refereeId) {
         return notificationsService.getNotifications(refereeId);
+    }
+
+    @PostMapping("/markAsRead")
+    public boolean markAsRead(@RequestBody NotificationsDTO notificationsDTO) {
+        return notificationsService.markAsRead(notificationsDTO.getId());
     }
 
 }
