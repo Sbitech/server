@@ -51,4 +51,12 @@ public class NotificationsServiceImpl implements NotificationsService {
         }
         return false;
     }
+
+    @Override
+    public boolean markAsDeleted(Long notificationId) {
+        if(notificationsMapper.markAsDeleted(notificationId)){
+            return true;
+        }
+        return false;
+    }
 }

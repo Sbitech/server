@@ -10,4 +10,5 @@ public interface NotificationsService {
 
     boolean markAsRead(Long notificationId);
 
+    boolean markAsDeleted(Long notificationId);
 }

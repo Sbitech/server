@@ -6,11 +6,18 @@
         select *
         from notifications
         where referee_id = #{refereeId}
+          and display = true
     </select>
 
     <update id="markAsRead">
         update notifications
         set is_read = 1
+        where id = #{notificationId}
+    </update>
+
+    <update id="markAsDeleted">
+        update notifications
+        set display = false
         where id = #{notificationId}
     </update>
 </mapper>

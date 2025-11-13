@@ -26,4 +26,9 @@ public class NotificationsController {
         return notificationsService.markAsRead(notificationsDTO.getId());
     }
 
+    @PostMapping("/markAsDeleted")
+    public boolean markAsDeleted(@RequestBody NotificationsDTO notificationsDTO) {
+        return notificationsService.markAsDeleted(notificationsDTO.getId());
+    }
+
 }
