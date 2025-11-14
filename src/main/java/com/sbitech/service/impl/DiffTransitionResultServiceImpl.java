@@ -26,7 +26,7 @@ public class DiffTransitionResultServiceImpl implements DiffTransitionResultServ
         diffTransitionResultDTO.setTransitionFailedReason(transitionFailedReason);
         diffTransitionResultDTO.setTransitionScore(diffTransitionResult.getTransitionScore());
         diffTransitionResultDTO.setDiffFailedReason(diffFailedReason);
-        diffTransitionResultDTO.setDiffScore(diffTransitionResult.getDiffScore());
+        diffTransitionResultDTO.setDifficultyScore(diffTransitionResult.getDifficultyScore());
 
         diffTransitionResultDTO.setMoveQualityScore(diffTransitionResult.getMoveQualityScore());
         diffTransitionResultDTO.setMovePerformanceScore(diffTransitionResult.getMovePerformanceScore());
@@ -42,7 +42,7 @@ public class DiffTransitionResultServiceImpl implements DiffTransitionResultServ
         DiffTransitionResult dtr = new DiffTransitionResult();
         dtr.setMoveId(dto.getMoveId());
         dtr.setMoveName(dto.getMoveName());
-        dtr.setDiffScore(dto.getDiffScore());
+        dtr.setDifficultyScore(dto.getDifficultyScore());
         dtr.setTransitionFailedReason(dto.getTransitionFailedReason().split(","));
         dtr.setTransitionScore(dto.getTransitionScore());
         dtr.setDiffFailedReason(dto.getDiffFailedReason().split(","));

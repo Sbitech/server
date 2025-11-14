@@ -15,6 +15,7 @@ public class DiffTransitionResultController {
 
     @PostMapping("/upDiffTransitionResult")
     public boolean upDiffTransitionResult(@RequestBody DiffTransitionResult diffTransitionResult) {
+        System.out.println(diffTransitionResult);
         return diffTransitionResultService.upDiffTransitionResult(diffTransitionResult);
     }
 

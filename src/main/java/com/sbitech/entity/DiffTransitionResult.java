@@ -18,8 +18,8 @@ public class DiffTransitionResult {
     @JsonProperty("move_name")
     private String moveName;
 
-    @JsonProperty("diff_score")
-    private Float diffScore;
+    @JsonProperty("difficulty_score")
+    private Float difficultyScore;
     @JsonProperty("diff_failed_reason")
     private String[] diffFailedReason;
     @JsonProperty("transition_score")

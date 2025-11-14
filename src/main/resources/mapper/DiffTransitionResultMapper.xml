@@ -5,13 +5,13 @@
     <insert id="upDiffTransitionResult">
         insert into diff_transition_result (move_id,
                                             move_name,
-                                            diff_score,
+                                            difficulty_score,
                                             diff_failed_reason,
                                             transition_score,
                                             transition_failed_reason,
                                             move_quality_score,
                                             move_performance_score)
-        values (#{moveId}, #{moveName}, #{diffScore}, #{diffFailedReason}, #{transitionScore},
+        values (#{moveId}, #{moveName}, #{difficultyScore}, #{diffFailedReason}, #{transitionScore},
                 #{transitionFailedReason}, #{moveQualityScore}, #{movePerformanceScore})
     </insert>
 

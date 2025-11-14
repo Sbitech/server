@@ -13,7 +13,7 @@ public class DiffTransitionResultDTO {
 
     private Long moveId;
     private String moveName;
-    private Float diffScore;
+    private Float difficultyScore;
     private String diffFailedReason;
     private Float transitionScore;
     private String transitionFailedReason;
