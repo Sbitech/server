@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbitech.mapper.DiffTransitionResultMapper">
+
+    <insert id="upDiffTransitionResult">
+        insert into diff_transition_result (diff_score, diff_failed_reason, transition_score, transition_failed_reason)
+        values (#{diffScore}, #{diffFailedReason}, #{transitionScore}, #{transitionFailedReason})
+    </insert>
+
+    <select id="getDiffTransitionResult" resultType="com.sbitech.dto.DiffTransitionResultDTO">
+        select * from  diff_transition_result
+            order by id desc
+        limit 1
+    </select>
+</mapper>

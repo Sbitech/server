@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbitech.mapper.CompetitionMapper">
+
+    <select id="getCompetitionByTime" resultType="com.sbitech.dto.CompetitionDTO">
+        select c.competition_id,
+               c.competition_name
+        from competition_info c
+                 left join events e on c.competition_id = e.competition_id
+        where #{nowTime} BETWEEN c.start_date AND c.end_date;
+    </select>
+</mapper>

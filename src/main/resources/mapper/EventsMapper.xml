@@ -14,4 +14,18 @@
                  left join player_matches pm on e.id = pm.events_id
         where pm.user_id=#{id}
     </select>
+
+    <select id="getEventsIdById" resultType="java.lang.Long">
+        select e.id
+        from events e
+                 left join competition_info c on e.competition_id = c.competition_id
+        where c.competition_id = #{competitionId}
+    </select>
+
+    <select id="getEventNameById" resultType="java.lang.String">
+        select name
+        from events
+        where id = #{eventId}
+    </select>
+
 </mapper>
