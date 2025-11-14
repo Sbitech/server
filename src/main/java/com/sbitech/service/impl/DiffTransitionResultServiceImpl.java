@@ -20,10 +20,16 @@ public class DiffTransitionResultServiceImpl implements DiffTransitionResultServ
         val diffFailedReason = String.join(",", diffTransitionResult.getDiffFailedReason());
         val diffTransitionResultDTO = new DiffTransitionResultDTO();
 
+        diffTransitionResultDTO.setMoveId(diffTransitionResult.getMoveId());
+        diffTransitionResultDTO.setMoveName(diffTransitionResult.getMoveName());
+
         diffTransitionResultDTO.setTransitionFailedReason(transitionFailedReason);
         diffTransitionResultDTO.setTransitionScore(diffTransitionResult.getTransitionScore());
         diffTransitionResultDTO.setDiffFailedReason(diffFailedReason);
         diffTransitionResultDTO.setDiffScore(diffTransitionResult.getDiffScore());
+
+        diffTransitionResultDTO.setMoveQualityScore(diffTransitionResult.getMoveQualityScore());
+        diffTransitionResultDTO.setMovePerformanceScore(diffTransitionResult.getMovePerformanceScore());
 
         return diffTransitionResultMapper.upDiffTransitionResult(diffTransitionResultDTO);
     }
@@ -34,10 +40,14 @@ public class DiffTransitionResultServiceImpl implements DiffTransitionResultServ
         DiffTransitionResultDTO dto = diffTransitionResultMapper.getDiffTransitionResult();
 
         DiffTransitionResult dtr = new DiffTransitionResult();
+        dtr.setMoveId(dto.getMoveId());
+        dtr.setMoveName(dto.getMoveName());
         dtr.setDiffScore(dto.getDiffScore());
         dtr.setTransitionFailedReason(dto.getTransitionFailedReason().split(","));
         dtr.setTransitionScore(dto.getTransitionScore());
         dtr.setDiffFailedReason(dto.getDiffFailedReason().split(","));
+        dtr.setMoveQualityScore(dto.getMoveQualityScore());
+        dtr.setMovePerformanceScore(dto.getMovePerformanceScore());
         return dtr;
     }
 }

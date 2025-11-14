@@ -3,8 +3,16 @@
 <mapper namespace="com.sbitech.mapper.DiffTransitionResultMapper">
 
     <insert id="upDiffTransitionResult">
-        insert into diff_transition_result (diff_score, diff_failed_reason, transition_score, transition_failed_reason)
-        values (#{diffScore}, #{diffFailedReason}, #{transitionScore}, #{transitionFailedReason})
+        insert into diff_transition_result (move_id,
+                                            move_name,
+                                            diff_score,
+                                            diff_failed_reason,
+                                            transition_score,
+                                            transition_failed_reason,
+                                            move_quality_score,
+                                            move_performance_score)
+        values (#{moveId}, #{moveName}, #{diffScore}, #{diffFailedReason}, #{transitionScore},
+                #{transitionFailedReason}, #{moveQualityScore}, #{movePerformanceScore})
     </insert>
 
     <select id="getDiffTransitionResult" resultType="com.sbitech.dto.DiffTransitionResultDTO">

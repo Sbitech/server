@@ -12,6 +12,12 @@ import lombok.NoArgsConstructor;
 
 public class DiffTransitionResult {
 
+
+    @JsonProperty("move_id")
+    private Long moveId;
+    @JsonProperty("move_name")
+    private String moveName;
+
     @JsonProperty("diff_score")
     private Float diffScore;
     @JsonProperty("diff_failed_reason")
@@ -20,5 +26,10 @@ public class DiffTransitionResult {
     private Float transitionScore;
     @JsonProperty("transition_failed_reason")
     private String[] transitionFailedReason;
+
+    @JsonProperty("move_quality_score")
+    private Float moveQualityScore;
+    @JsonProperty("move_performance_score")
+    private Float movePerformanceScore;
 
 }

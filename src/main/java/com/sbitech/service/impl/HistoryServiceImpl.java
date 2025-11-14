@@ -2,11 +2,9 @@ package com.sbitech.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.sbitech.dto.DisputesQueryDTO;
 import com.sbitech.dto.HistoryQueryDTO;
 import com.sbitech.mapper.HistoryMapper;
 import com.sbitech.service.HistoryService;
-import com.sbitech.vo.DisputesVO;
 import com.sbitech.vo.HistoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

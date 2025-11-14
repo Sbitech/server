@@ -1,7 +1,6 @@
 package com.sbitech.controller;
 
 import com.sbitech.dto.NotificationsDTO;
-import com.sbitech.entity.Notifications;
 import com.sbitech.service.NotificationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

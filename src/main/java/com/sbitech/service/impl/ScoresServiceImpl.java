@@ -3,10 +3,8 @@ package com.sbitech.service.impl;
 import com.sbitech.dto.AllScoresDTO;
 import com.sbitech.dto.RankingDTO;
 import com.sbitech.dto.UpdateScoreDTO;
-import com.sbitech.entity.Scores;
 import com.sbitech.mapper.ScoresMapper;
 import com.sbitech.service.ScoresService;
-import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

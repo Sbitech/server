@@ -1,6 +1,5 @@
 package com.sbitech.dto;
 
-import com.fasterxml.jackson.annotation.JacksonAnnotationsInside;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

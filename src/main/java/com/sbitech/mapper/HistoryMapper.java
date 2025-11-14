@@ -1,6 +1,5 @@
 package com.sbitech.mapper;
 
-import com.github.pagehelper.PageInfo;
 import com.sbitech.vo.HistoryVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

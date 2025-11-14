@@ -1,6 +1,5 @@
 package com.sbitech.mapper;
 
-import com.sbitech.entity.Disputes;
 import com.sbitech.vo.DisputesDetailVO;
 import com.sbitech.vo.DisputesVO;
 import org.apache.ibatis.annotations.Mapper;
