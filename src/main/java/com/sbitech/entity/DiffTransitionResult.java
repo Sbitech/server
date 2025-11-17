@@ -20,16 +20,27 @@ public class DiffTransitionResult {
 
     @JsonProperty("difficulty_score")
     private Float difficultyScore;
-    @JsonProperty("diff_failed_reason")
-    private String[] diffFailedReason;
+
     @JsonProperty("transition_score")
     private Float transitionScore;
-    @JsonProperty("transition_failed_reason")
-    private String[] transitionFailedReason;
 
+
+    private String[] details;   //
+
+    @JsonProperty("failed_reason")
+    private String[] failedReason;
     @JsonProperty("move_quality_score")
     private Float moveQualityScore;
     @JsonProperty("move_performance_score")
     private Float movePerformanceScore;
+
+    @JsonProperty("jump_height")
+    private Float jumpHeight;
+    @JsonProperty("turn_body_angle")
+    private Float turnBodyAngle;
+    @JsonProperty("hit_leg_angle")
+    private Float hitLegAngle;
+    @JsonProperty("runup_steps")
+    private Integer runupSteps;
 
 }

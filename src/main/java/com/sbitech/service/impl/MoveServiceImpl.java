@@ -18,4 +18,9 @@ public class MoveServiceImpl implements MoveService {
     public List<Move> getAll() {
        return moveMapper.getAll();
     }
+
+//    @Scheduled(fixedRate = 10000)
+//    public void ScheduledDemo() {
+//        System.err.println("Scheduled task executed: " + System.currentTimeMillis());
+//    }
 }

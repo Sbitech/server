@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.sql.Timestamp;
 
 @SpringBootApplication
+//@EnableScheduling
 public class ServerApplication {
 
     public static void main(String[] args) {

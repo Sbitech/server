@@ -13,12 +13,17 @@ public class DiffTransitionResultDTO {
 
     private Long moveId;
     private String moveName;
-    private Float difficultyScore;
-    private String diffFailedReason;
-    private Float transitionScore;
-    private String transitionFailedReason;
 
+    private Float difficultyScore;
+    private Float transitionScore;
+    private String details;
+
+    private String failedReason;
     private Float moveQualityScore;
     private Float movePerformanceScore;
 
+    private Float jumpHeight;
+    private Float turnBodyAngle;
+    private Float hitLegAngle;
+    private Integer runupSteps;
 }

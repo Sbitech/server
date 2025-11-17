@@ -6,13 +6,18 @@
         insert into diff_transition_result (move_id,
                                             move_name,
                                             difficulty_score,
-                                            diff_failed_reason,
                                             transition_score,
-                                            transition_failed_reason,
+                                            details,
+                                            failed_reason,
                                             move_quality_score,
-                                            move_performance_score)
-        values (#{moveId}, #{moveName}, #{difficultyScore}, #{diffFailedReason}, #{transitionScore},
-                #{transitionFailedReason}, #{moveQualityScore}, #{movePerformanceScore})
+                                            move_performance_score,
+                                            jump_height,
+                                            turn_body_angle,
+                                            hit_leg_angle,
+                                            runup_steps)
+        values (#{moveId}, #{moveName}, #{difficultyScore}, #{transitionScore},
+                #{details}, #{failedReason}, #{moveQualityScore}, #{movePerformanceScore}, #{jumpHeight},
+                #{turnBodyAngle},#{hitLegAngle},#{runupSteps})
     </insert>
 
     <select id="getDiffTransitionResult" resultType="com.sbitech.dto.DiffTransitionResultDTO">

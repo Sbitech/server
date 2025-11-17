@@ -16,20 +16,24 @@ public class DiffTransitionResultServiceImpl implements DiffTransitionResultServ
 
     @Override
     public boolean upDiffTransitionResult(DiffTransitionResult diffTransitionResult) {
-        val transitionFailedReason = String.join(",", diffTransitionResult.getTransitionFailedReason());
-        val diffFailedReason = String.join(",", diffTransitionResult.getDiffFailedReason());
+
+        val details = String.join(",", diffTransitionResult.getDetails());
+        val failedReason = String.join(",", diffTransitionResult.getFailedReason());
+
         val diffTransitionResultDTO = new DiffTransitionResultDTO();
 
         diffTransitionResultDTO.setMoveId(diffTransitionResult.getMoveId());
         diffTransitionResultDTO.setMoveName(diffTransitionResult.getMoveName());
-
-        diffTransitionResultDTO.setTransitionFailedReason(transitionFailedReason);
-        diffTransitionResultDTO.setTransitionScore(diffTransitionResult.getTransitionScore());
-        diffTransitionResultDTO.setDiffFailedReason(diffFailedReason);
         diffTransitionResultDTO.setDifficultyScore(diffTransitionResult.getDifficultyScore());
-
+        diffTransitionResultDTO.setTransitionScore(diffTransitionResult.getTransitionScore());
+        diffTransitionResultDTO.setDetails(details);
+        diffTransitionResultDTO.setFailedReason(failedReason);
         diffTransitionResultDTO.setMoveQualityScore(diffTransitionResult.getMoveQualityScore());
         diffTransitionResultDTO.setMovePerformanceScore(diffTransitionResult.getMovePerformanceScore());
+        diffTransitionResultDTO.setJumpHeight(diffTransitionResult.getJumpHeight());
+        diffTransitionResultDTO.setTurnBodyAngle(diffTransitionResult.getTurnBodyAngle());
+        diffTransitionResultDTO.setHitLegAngle(diffTransitionResult.getHitLegAngle());
+        diffTransitionResultDTO.setRunupSteps(diffTransitionResult.getRunupSteps());
 
         return diffTransitionResultMapper.upDiffTransitionResult(diffTransitionResultDTO);
     }
@@ -43,11 +47,15 @@ public class DiffTransitionResultServiceImpl implements DiffTransitionResultServ
         dtr.setMoveId(dto.getMoveId());
         dtr.setMoveName(dto.getMoveName());
         dtr.setDifficultyScore(dto.getDifficultyScore());
-        dtr.setTransitionFailedReason(dto.getTransitionFailedReason().split(","));
         dtr.setTransitionScore(dto.getTransitionScore());
-        dtr.setDiffFailedReason(dto.getDiffFailedReason().split(","));
+        dtr.setDetails(dto.getDetails().split(","));
+        dtr.setFailedReason(dto.getFailedReason().split(","));
         dtr.setMoveQualityScore(dto.getMoveQualityScore());
         dtr.setMovePerformanceScore(dto.getMovePerformanceScore());
+        dtr.setJumpHeight(dto.getJumpHeight());
+        dtr.setTurnBodyAngle(dto.getTurnBodyAngle());
+        dtr.setHitLegAngle(dto.getHitLegAngle());
+        dtr.setRunupSteps(dto.getRunupSteps());
         return dtr;
     }
 }
