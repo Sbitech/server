@@ -3,10 +3,9 @@
 <mapper namespace="com.sbitech.mapper.CompetitionMapper">
 
     <select id="getCompetitionByTime" resultType="com.sbitech.dto.CompetitionDTO">
-        select c.competition_id,
-               c.competition_name
-        from competition_info c
-                 left join events e on c.competition_id = e.competition_id
+        SELECT DISTINCT c.competition_id, c.competition_name
+        FROM competition_info c
+        LEFT JOIN events e ON c.competition_id = e.competition_id
         where #{nowTime} BETWEEN c.start_date AND c.end_date;
     </select>
 </mapper>

@@ -26,7 +26,9 @@ public class CompetitionServiceImpl implements CompetitionService {
         Timestamp nowTime = new Timestamp(System.currentTimeMillis());
         System.out.println("Current Time: " + nowTime);
         CompetitionDTO dto = competitionMapper.getCompetitionByTime(nowTime);
-
+        if (dto == null) {
+            return null;
+        }
         Map<Long, String> eventsInfo = new HashMap<>();
         List<Long> eventIds = eventsMapper.getEventsIdById(dto.getCompetitionId());
         for (Long eventId : eventIds) {
