@@ -1,12 +1,17 @@
 package com.sbitech.controller;
 
+import com.sbitech.dto.PDFInfoDTO;
 import com.sbitech.dto.PlayerMatchInfoDTO;
 import com.sbitech.dto.PlayerMatchesDTO;
 import com.sbitech.dto.PlayerSkillInfoDTO;
 import com.sbitech.entity.PlayerMatches;
+import com.sbitech.service.PdfScanService;
 import com.sbitech.service.PlayerMatchesService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,6 +25,8 @@ public class PlayerMatchesController {
 
     @Autowired
     private PlayerMatchesService playerMatchesService;
+    @Autowired
+    private PdfScanService pdfScanService;
 
     @GetMapping("/getAll")
     public List<PlayerMatches> getAll() {
@@ -60,5 +67,10 @@ public class PlayerMatchesController {
             e.printStackTrace();
             return "null";
         }
+    }
+
+    @GetMapping("/getFpdList")
+    public List<PDFInfoDTO> getFpdList() {
+        return pdfScanService.getPDFList();
     }
 }

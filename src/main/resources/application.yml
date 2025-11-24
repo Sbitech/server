@@ -1,20 +1,3 @@
-# Mysql
-
-#spring:
-#  application:
-#    name: webServer
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/martial?useSSL=false
-#    username: root
-#    password: 1234
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#  jackson:
-#    date-format: yyyy-MM-dd HH:mm
-#    time-zone: GMT+8
-
-# postgresql
-
-
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   configuration:
@@ -26,7 +9,7 @@ logging:
     com.sbitech.mapper: debug
 
 server:
-    port: 9090
+  port: 9090
 spring:
   datasource:
     url: jdbc:postgresql://43.143.94.191:35432/aireferee
@@ -37,3 +20,7 @@ spring:
 jwt:
   secret: mySecretKeyForMartialArtsRefereeSystemShouldBeVeryLongAndSecure123456789
   expiration: 86400000  # 24小时，单位毫秒
+
+pdf:
+  scan:
+    path: C:\Users\dlnsupport\Documents\Project\武术系统\userFront\public\report
