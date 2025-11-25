@@ -15,4 +15,6 @@ public interface MoveMapper {
     Float getByCode(String key);
 
     Collection<Move> getAllMoves();
+
+    String getNameByCode(String s);
 }

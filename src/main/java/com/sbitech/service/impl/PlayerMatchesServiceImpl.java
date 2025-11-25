@@ -1,5 +1,6 @@
 package com.sbitech.service.impl;
 
+import com.sbitech.dto.MoveScoreDTO;
 import com.sbitech.dto.PlayerMatchInfoDTO;
 import com.sbitech.dto.PlayerMatchesDTO;
 import com.sbitech.dto.PlayerSkillInfoDTO;
@@ -15,10 +16,7 @@ import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -85,12 +83,16 @@ public class PlayerMatchesServiceImpl implements PlayerMatchesService {
         String[] move = moveList.split(",");
         String[] score = scoreList.split(",");
 
+        ArrayList<MoveScoreDTO> moveInfoList = new ArrayList<>();
         Map<String, Float> moveMap = new LinkedHashMap<String, Float>();
-//        for(String key:move){
         for (int i = 0; i < move.length; i++) {
-            moveMap.put(move[i], Float.valueOf(score[i]));
+            MoveScoreDTO moveScoreDTO = new MoveScoreDTO();
+            moveScoreDTO.setCode(move[i]);
+            moveScoreDTO.setScore(Float.valueOf(score[i]));
+            moveScoreDTO.setMoveName(moveMapper.getNameByCode(move[i]));
+            moveInfoList.add(moveScoreDTO);
         }
-        playerMatches.setMoveInfo(moveMap);
+        playerMatches.setMoveScoreList(moveInfoList);
         return playerMatches;
     }
 

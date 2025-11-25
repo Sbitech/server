@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
-import java.util.Map;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -24,7 +24,6 @@ public class PlayerMatchesDTO {
 
     private String fileUrl;    // 视频录像URL
     private Timestamp uploadedTime; // 上传时间
-
-    private Map<String,Float> moveInfo;
+    private List<MoveScoreDTO> moveScoreList;
 
 }

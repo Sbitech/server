@@ -21,4 +21,9 @@
     <select id="getAllMoves" resultType="com.sbitech.entity.Move">
         select code, score from move;
     </select>
+    <select id="getNameByCode" resultType="java.lang.String">
+        select move_name
+        from move
+        where code = #{code};
+    </select>
 </mapper>
