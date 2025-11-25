@@ -17,7 +17,7 @@
                                             runup_steps)
         values (#{moveId}, #{moveName}, #{difficultyScore}, #{transitionScore},
                 #{details}, #{failedReason}, #{moveQualityScore}, #{movePerformanceScore}, #{jumpHeight},
-                #{turnBodyAngle},#{hitLegAngle},#{runupSteps})
+                #{turnBodyAngle}, #{hitLegAngle}, #{runupSteps})
     </insert>
 
     <select id="getDiffTransitionResult" resultType="com.sbitech.dto.DiffTransitionResultDTO">

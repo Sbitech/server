@@ -5,7 +5,7 @@
     <select id="getCompetitionByTime" resultType="com.sbitech.dto.CompetitionDTO">
         SELECT DISTINCT c.competition_id, c.competition_name
         FROM competition_info c
-        LEFT JOIN events e ON c.competition_id = e.competition_id
+                 LEFT JOIN events e ON c.competition_id = e.competition_id
         where #{nowTime} BETWEEN c.start_date AND c.end_date;
     </select>
 </mapper>

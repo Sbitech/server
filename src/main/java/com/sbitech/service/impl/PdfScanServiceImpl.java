@@ -35,8 +35,12 @@ public class PdfScanServiceImpl implements PdfScanService {
                     list.add(new PDFInfoDTO(
                             path.getFileName().toString(),
                             formatSize(attrs.size()),
-                            formatTime(attrs.creationTime())
+                            Timestamp.from(attrs.lastModifiedTime().toInstant())
                     ));
+//                    System.out.println("创建时间: " + attrs.creationTime());
+//                    System.out.println("修改时间: " + attrs.lastModifiedTime());
+//                    System.out.println("访问时间: " + attrs.lastAccessTime());
+//                    System.out.println("转换后: " + Timestamp.from(attrs.lastModifiedTime().toInstant()));
                 }
             }
         } catch (Exception e) {
