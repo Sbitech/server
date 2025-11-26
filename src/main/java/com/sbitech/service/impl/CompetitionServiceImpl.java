@@ -35,7 +35,6 @@ public class CompetitionServiceImpl implements CompetitionService {
             eventsInfo.put(eventId, eventsMapper.getEventNameById(eventId));
         }
         dto.setEventsInfo(eventsInfo);
-
         return dto;
     }
 }

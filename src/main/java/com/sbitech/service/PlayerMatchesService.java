@@ -6,7 +6,6 @@ import com.sbitech.dto.PlayerSkillInfoDTO;
 import com.sbitech.entity.PlayerMatches;
 
 import java.util.List;
-import java.util.Map;
 
 public interface PlayerMatchesService {
     List<PlayerMatches> getAll();
