@@ -84,7 +84,6 @@ public class PlayerMatchesServiceImpl implements PlayerMatchesService {
         String[] score = scoreList.split(",");
 
         ArrayList<MoveScoreDTO> moveInfoList = new ArrayList<>();
-        Map<String, Float> moveMap = new LinkedHashMap<String, Float>();
         for (int i = 0; i < move.length; i++) {
             MoveScoreDTO moveScoreDTO = new MoveScoreDTO();
             moveScoreDTO.setCode(move[i]);
@@ -104,7 +103,6 @@ public class PlayerMatchesServiceImpl implements PlayerMatchesService {
 
     @Override
     public List<PlayerMatchInfoDTO> getAllInfoByEventId(Long eventId) {
-
         System.out.println(playerMatchesMapper.getAllInfoByEventId(eventId));
         return playerMatchesMapper.getAllInfoByEventId(eventId);
     }

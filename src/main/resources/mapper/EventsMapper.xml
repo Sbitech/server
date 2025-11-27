@@ -7,12 +7,27 @@
     </select>
 
     <select id="getCompetition_Events" resultType="com.sbitech.dto.Competition_EventsQueryDTO">
-        select c.competition_id,c.competition_name,c.start_date,c.end_date,c."location",c.host_organization,c.event_level,c.status,
-               e.id,e.name,e.category,e.rules,e.start_time
+        select c.competition_id,
+               c.competition_name,
+               c.start_date,
+               c.end_date,
+               c."location",
+               c.host_organization,
+               c.event_level,
+               c.status,
+               e.id,
+               e.name,
+               e.category,
+               e.rules,
+               e.start_time
         from competition_info c
                  left join events e on c.competition_id = e.competition_id
                  left join player_matches pm on e.id = pm.events_id
-        where pm.user_id=#{id}
+        where pm.user_id = #{id}
+          and now() between c.start_date and c.end_date
+          and now() &lt;= e.start_time
+        order by e.start_time asc
+        limit 1
     </select>
 
     <select id="getEventsIdById" resultType="java.lang.Long">

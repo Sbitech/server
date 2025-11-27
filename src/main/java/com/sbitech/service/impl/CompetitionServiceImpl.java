@@ -22,16 +22,15 @@ public class CompetitionServiceImpl implements CompetitionService {
 
 
     @Override
-    public CompetitionDTO getCompetitionByTime() {
-        Timestamp nowTime = new Timestamp(System.currentTimeMillis());
-        System.out.println("Current Time: " + nowTime);
-        CompetitionDTO dto = competitionMapper.getCompetitionByTime(nowTime);
+    public CompetitionDTO getCompetitionByTime() {  //通过当前时间判断有无比赛
+        Timestamp nowTime = new Timestamp(System.currentTimeMillis());  //获取当前时间
+        CompetitionDTO dto = competitionMapper.getCompetitionByTime(nowTime);   //查询当前时间区间的赛事
         if (dto == null) {
             return null;
         }
         Map<Long, String> eventsInfo = new HashMap<>();
-        List<Long> eventIds = eventsMapper.getEventsIdById(dto.getCompetitionId());
-        for (Long eventId : eventIds) {
+        List<Long> eventIds = eventsMapper.getEventsIdById(dto.getCompetitionId()); //通过赛事id获取该赛事中的比赛内容
+        for (Long eventId : eventIds) { //把比赛内容放入map中，存在dto中返回
             eventsInfo.put(eventId, eventsMapper.getEventNameById(eventId));
         }
         dto.setEventsInfo(eventsInfo);

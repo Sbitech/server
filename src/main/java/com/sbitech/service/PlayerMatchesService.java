@@ -17,5 +17,6 @@ public interface PlayerMatchesService {
     PlayerMatchesDTO getPlayerMatchesById(Long id);
 
     List<PlayerMatchInfoDTO> getAllPlayerMatch();
+
     List<PlayerMatchInfoDTO> getAllInfoByEventId(Long eventId);
 }

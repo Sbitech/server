@@ -18,7 +18,7 @@ public class NotificationsServiceImpl implements NotificationsService {
     private NotificationsMapper notificationsMapper;
 
     @Override
-    public List<NotificationsDTO> getNotifications(Long refereeId) {
+    public List<NotificationsDTO> getNotifications(Long refereeId) {    //通过裁判id获取对应的通知列表
         List<NotificationsDTO> dto = new ArrayList<>();
         List<Notifications> notifications = notificationsMapper.getNotifications(refereeId);
         for (Notifications notification : notifications) {
@@ -26,6 +26,7 @@ public class NotificationsServiceImpl implements NotificationsService {
             notificationDTO.setId(notification.getId());
             notificationDTO.setTitle(notification.getTitle());
             notificationDTO.setContent(notification.getContent());
+            notificationDTO.setTime(notification.getTime());
             if (notification.getType()==0){
                 notificationDTO.setType(NotificationsType.SYSTEM);
             }else if (notification.getType()==1){
@@ -45,7 +46,7 @@ public class NotificationsServiceImpl implements NotificationsService {
     }
 
     @Override
-    public boolean markAsRead(Long notificationId) {
+    public boolean markAsRead(Long notificationId) {    //标记已读
         if(notificationsMapper.markAsRead(notificationId)){
             return true;
         }
@@ -53,7 +54,7 @@ public class NotificationsServiceImpl implements NotificationsService {
     }
 
     @Override
-    public boolean markAsDeleted(Long notificationId) {
+    public boolean markAsDeleted(Long notificationId) { //标记已删除（假删除，只是显示）
         if(notificationsMapper.markAsDeleted(notificationId)){
             return true;
         }

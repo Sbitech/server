@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,4 +16,5 @@ public class Notifications {
     private String content; //内容
     private Short type; //0系统通知 1评分处理 2申诉处理
     private Short isRead; //是否已读
+    private Timestamp time; //通知时间
 }

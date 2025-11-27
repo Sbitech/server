@@ -3,10 +3,10 @@ package com.sbitech.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sbitech.dto.DisputesQueryDTO;
-import com.sbitech.vo.DisputesDetailVO;
-import com.sbitech.vo.DisputesVO;
 import com.sbitech.mapper.DisputesMapper;
 import com.sbitech.service.DisputesService;
+import com.sbitech.vo.DisputesDetailVO;
+import com.sbitech.vo.DisputesVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ public class DisputesServiceImpl implements DisputesService {
     private DisputesMapper disputesMapper;
 
     @Override
-    public PageInfo<DisputesVO> getDisputesByCondition(DisputesQueryDTO queryDTO) { //获取分页数据
+    public PageInfo<DisputesVO> getDisputesByCondition(DisputesQueryDTO queryDTO) { //获取争议信息的分页数据
         PageHelper.startPage(queryDTO.getPageNum(), queryDTO.getPageSize());
         List<DisputesVO> disputes = disputesMapper.disputesPage(
                 queryDTO.getStartTime(),

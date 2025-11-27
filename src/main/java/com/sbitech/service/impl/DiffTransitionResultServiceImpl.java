@@ -15,7 +15,7 @@ public class DiffTransitionResultServiceImpl implements DiffTransitionResultServ
     private DiffTransitionResultMapper diffTransitionResultMapper;
 
     @Override
-    public boolean upDiffTransitionResult(DiffTransitionResult diffTransitionResult) {
+    public boolean upDiffTransitionResult(DiffTransitionResult diffTransitionResult) {  //将视频解析结果编译持久化
 
         val details = String.join(",", diffTransitionResult.getDetails());
         val failedReason = String.join(",", diffTransitionResult.getFailedReason());
@@ -39,7 +39,7 @@ public class DiffTransitionResultServiceImpl implements DiffTransitionResultServ
     }
 
     @Override
-    public DiffTransitionResult getDiffTransitionResult() {
+    public DiffTransitionResult getDiffTransitionResult() { //从数据库获取最新的视频解析结果
 
         DiffTransitionResultDTO dto = diffTransitionResultMapper.getDiffTransitionResult();
 

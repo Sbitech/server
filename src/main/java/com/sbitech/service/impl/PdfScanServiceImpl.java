@@ -10,13 +10,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PdfScanServiceImpl implements PdfScanService {
+public class PdfScanServiceImpl implements PdfScanService { //在配置参数中的地址中获取PDF
 
     @Value("${pdf.scan.path}")
     private String scanPath;
@@ -49,7 +48,7 @@ public class PdfScanServiceImpl implements PdfScanService {
         return list;
     }
 
-    private String formatSize(long size) {
+    private String formatSize(long size) {  //格式化文件大小
         if (size < 1024) {
             return size + " B";
         } else if (size < 1024 * 1024) {
@@ -57,10 +56,6 @@ public class PdfScanServiceImpl implements PdfScanService {
         } else {
             return String.format("%.2f MB", size / 1024.0 / 1024.0);
         }
-    }
-
-    private Timestamp formatTime(FileTime fileTime) {
-        return Timestamp.from(fileTime.toInstant());
     }
 
 }

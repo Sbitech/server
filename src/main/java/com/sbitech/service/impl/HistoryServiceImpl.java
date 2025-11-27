@@ -18,7 +18,7 @@ public class HistoryServiceImpl implements HistoryService {
     private HistoryMapper historyMapper;
 
     @Override
-    public PageInfo<HistoryVO> getHistoryByCondition(HistoryQueryDTO queryDTO) { //获取分页数据
+    public PageInfo<HistoryVO> getHistoryByCondition(HistoryQueryDTO queryDTO) { //获取历史属于的分页数据
         PageHelper.startPage(queryDTO.getPageNum(), queryDTO.getPageSize());
         List<HistoryVO> history = historyMapper.historyPage(
                 queryDTO.getStartTime(),

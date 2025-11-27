@@ -31,7 +31,7 @@ public class RefereeServiceImpl implements RefereeService {
     }
 
     @Override
-    public Referee findByUsername(String username) {
+    public Referee findByUsername(String username) {    //通过用户名查找裁判
         return refereeMapper.selectByUsername(username);
     }
 }

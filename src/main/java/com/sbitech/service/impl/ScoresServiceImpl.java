@@ -42,7 +42,7 @@ public class ScoresServiceImpl implements ScoresService {
         allScoresDTO.setFinalScoreOfC(totalC);
         System.out.println(totalC);
 
-        allScoresDTO.setAllFinalScore(  //计算最终成绩
+        allScoresDTO.setAllFinalScore(  //计算最终成绩(BigDecimal类型)
                 allScoresDTO.getFinalScoreOfA()
                         .add(allScoresDTO.getFinalScoreOfB())
                         .add(allScoresDTO.getFinalScoreOfC())
