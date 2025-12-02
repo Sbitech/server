@@ -39,4 +39,18 @@
         </where>
         ORDER BY pm.time DESC
     </select>
+
+    <select id="getDetail" resultType="com.sbitech.dto.HistoryDetailDTO">
+        select pli.id        id,
+               pli.real_name playerName,
+               e.name        eventName,
+               pm.time       playerMatchTime,
+               pm.status     status,
+               e.id          eventId,
+               pm.id         playerMatchId
+        from player_matches pm
+                 left join events e on pm.events_id = e.id
+                 left join player_info pli on pm.user_id = pli.id
+        where pm.id = #{id}
+    </select>
 </mapper>

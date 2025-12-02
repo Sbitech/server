@@ -1,5 +1,6 @@
 package com.sbitech.mapper;
 
+import com.sbitech.dto.HistoryDetailDTO;
 import com.sbitech.vo.HistoryVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -15,4 +16,5 @@ public interface HistoryMapper {
                                 @Param("category") String category,
                                 @Param("name") String name);
 
+    HistoryDetailDTO getDetail(Long id);
 }
