@@ -16,15 +16,16 @@
     </update>
 
     <select id="getAllScoresByPlayerMatchId" resultType="com.sbitech.dto.AllScoresDTO">
+
         select s.score_list_c as scoresOfC
              , pif.real_name  as playerName
              , e.name         as eventName
              , e.id           as eventId
-        from scores s
-                 left join player_matches pm on s.player_match_id = pm.id
+        from player_matches pm
+                 left join scores s on s.player_match_id = pm.id
                  left join player_info pif on pm.user_id = pif.id
                  left join events e on pm.events_id = e.id
-        where player_match_id = #{playerMatchId}
+        where pm.id = #{playerMatchId}
           and pm.events_id = events_id
     </select>
 

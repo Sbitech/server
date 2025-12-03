@@ -33,11 +33,16 @@ public class ScoresServiceImpl implements ScoresService {
 
         allScoresDTO.setPlayerMatchId(playerMatchId);
         String scoreOfC = allScoresDTO.getScoresOfC();
-        String[] scoreC = scoreOfC.split(",");
+        String[] scoreC=null;
+        if (scoreOfC != null) {
+            scoreC = scoreOfC.split(",");
+        }
         BigDecimal totalC = BigDecimal.ZERO;
-        for (String s : scoreC) {   //成绩相加获得C组最终得分
-            BigDecimal value = new BigDecimal(s);
-            totalC = totalC.add(value);
+        if (scoreC != null) {
+            for (String s : scoreC) {   //成绩相加获得C组最终得分
+                BigDecimal value = new BigDecimal(s);
+                totalC = totalC.add(value);
+            }
         }
         allScoresDTO.setFinalScoreOfC(totalC);
         System.out.println(totalC);
