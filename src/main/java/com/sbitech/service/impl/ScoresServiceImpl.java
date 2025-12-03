@@ -30,7 +30,6 @@ public class ScoresServiceImpl implements ScoresService {
     public AllScoresDTO getAllScores(Long playerMatchId) {
         AllScoresDTO allScoresDTO = new AllScoresDTO();
         allScoresDTO = scoresMapper.getAllScoresByPlayerMatchId(playerMatchId);
-
         allScoresDTO.setPlayerMatchId(playerMatchId);
         String scoreOfC = allScoresDTO.getScoresOfC();
         String[] scoreC=null;
