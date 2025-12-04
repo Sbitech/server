@@ -16,4 +16,6 @@ public interface EventsMapper {
 
     String getEventNameById(Long eventId);
 
+    List<Events> getEventNameByIds(List<Long> ids);
+
 }
