@@ -2,6 +2,7 @@ package com.sbitech.service.impl;
 
 import com.sbitech.dto.PDFInfoDTO;
 import com.sbitech.service.PdfScanService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class PdfScanServiceImpl implements PdfScanService { //在配置参数中的地址中获取PDF
 

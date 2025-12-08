@@ -2,18 +2,18 @@ package com.sbitech.controller;
 
 import com.sbitech.dto.NotificationsDTO;
 import com.sbitech.service.NotificationsService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @CrossOrigin
+@RequiredArgsConstructor
 @RequestMapping("/notifications")
 public class NotificationsController {
 
-    @Autowired
-    private NotificationsService notificationsService;
+    private final NotificationsService notificationsService;
 
     @GetMapping("getNotifications")
     public List<NotificationsDTO> getNotifications(Long refereeId) {

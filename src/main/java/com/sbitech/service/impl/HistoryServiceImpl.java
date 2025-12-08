@@ -9,18 +9,17 @@ import com.sbitech.mapper.HistoryMapper;
 import com.sbitech.service.HistoryService;
 import com.sbitech.service.ScoresService;
 import com.sbitech.vo.HistoryVO;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class HistoryServiceImpl implements HistoryService {
 
-    @Autowired
-    private HistoryMapper historyMapper;
-    @Autowired
-    private ScoresService scoresService;
+    private final HistoryMapper historyMapper;
+    private final ScoresService scoresService;
 
     @Override
     public PageInfo<HistoryVO> getHistoryByCondition(HistoryQueryDTO queryDTO) { //获取历史属于的分页数据

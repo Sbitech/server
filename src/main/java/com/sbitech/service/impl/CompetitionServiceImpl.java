@@ -5,7 +5,7 @@ import com.sbitech.entity.Events;
 import com.sbitech.mapper.CompetitionMapper;
 import com.sbitech.mapper.EventsMapper;
 import com.sbitech.service.CompetitionService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -14,13 +14,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Service
 public class CompetitionServiceImpl implements CompetitionService {
 
-    @Autowired
-    private CompetitionMapper competitionMapper;
-    @Autowired
-    private EventsMapper eventsMapper;
+    private final CompetitionMapper competitionMapper;
+    private final EventsMapper eventsMapper;
 
 
     @Override

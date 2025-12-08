@@ -4,18 +4,16 @@ import com.sbitech.dto.DiffTransitionResultDTO;
 import com.sbitech.entity.DiffTransitionResult;
 import com.sbitech.mapper.DiffTransitionResultMapper;
 import com.sbitech.service.DiffTransitionResultService;
+import lombok.RequiredArgsConstructor;
 import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class DiffTransitionResultServiceImpl implements DiffTransitionResultService {
 
-    @Autowired
-    private DiffTransitionResultMapper diffTransitionResultMapper;
-
-    @Override
-    public boolean upDiffTransitionResult(DiffTransitionResult diffTransitionResult) {  //将视频解析结果编译持久化
+    private final DiffTransitionResultMapper diffTransitionResultMapper;
+    public final boolean upDiffTransitionResult(DiffTransitionResult diffTransitionResult) {  //将视频解析结果编译持久化
 
         val details = String.join(",", diffTransitionResult.getDetails());
         val failedReason = String.join(",", diffTransitionResult.getFailedReason());

@@ -2,7 +2,7 @@ package com.sbitech.controller;
 
 import com.sbitech.entity.Move;
 import com.sbitech.service.MoveService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +12,11 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/move")
 public class MoveController {
-    @Autowired
-    private MoveService moveService;
+
+    private final MoveService moveService;
 
     @GetMapping("/all")
     public List<Move> getAll() {

@@ -5,17 +5,17 @@ import com.sbitech.dto.NotificationsType;
 import com.sbitech.entity.Notifications;
 import com.sbitech.mapper.NotificationsMapper;
 import com.sbitech.service.NotificationsService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class NotificationsServiceImpl implements NotificationsService {
 
-    @Autowired
-    private NotificationsMapper notificationsMapper;
+    private final NotificationsMapper notificationsMapper;
 
     @Override
     public List<NotificationsDTO> getNotifications(Long refereeId) {    //通过裁判id获取对应的通知列表

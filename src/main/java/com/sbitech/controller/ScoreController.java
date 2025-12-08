@@ -4,17 +4,18 @@ import com.sbitech.dto.AllScoresDTO;
 import com.sbitech.dto.RankingDTO;
 import com.sbitech.dto.UpdateScoreDTO;
 import com.sbitech.service.ScoresService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @CrossOrigin
+@RequiredArgsConstructor
 @RequestMapping("/score")
 public class ScoreController {
-    @Autowired
-    private ScoresService scoresService;
+
+    private final ScoresService scoresService;
 
     @PutMapping("/updateScore")
     public Boolean updateScore(@RequestBody UpdateScoreDTO updateScoreDTO) {

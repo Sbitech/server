@@ -2,7 +2,7 @@ package com.sbitech.controller;
 
 import com.sbitech.entity.DiffTransitionResult;
 import com.sbitech.service.DiffTransitionResultService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -12,13 +12,13 @@ import java.util.Queue;
 
 @CrossOrigin
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/diffTransitionResult")
 public class DiffTransitionResultController {
 
     private Queue<DiffTransitionResult> diff=new LinkedList<>();
 
-    @Autowired
-    private DiffTransitionResultService diffTransitionResultService;
+    private final DiffTransitionResultService diffTransitionResultService;
 
     @PostMapping("/upDiffTransitionResult")
     public boolean upDiffTransitionResult(@RequestBody DiffTransitionResult diffTransitionResult) {

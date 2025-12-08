@@ -7,16 +7,16 @@ import com.sbitech.mapper.DisputesMapper;
 import com.sbitech.service.DisputesService;
 import com.sbitech.vo.DisputesDetailVO;
 import com.sbitech.vo.DisputesVO;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class DisputesServiceImpl implements DisputesService {
 
-    @Autowired
-    private DisputesMapper disputesMapper;
+    private final DisputesMapper disputesMapper;
 
     @Override
     public PageInfo<DisputesVO> getDisputesByCondition(DisputesQueryDTO queryDTO) { //获取争议信息的分页数据

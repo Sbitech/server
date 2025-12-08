@@ -8,4 +8,6 @@ public interface RefereeMapper {
     Referee exist(String username, String password);
 
     Referee selectByUsername(String username);
+
+    Referee getUserByUsername(String username);
 }

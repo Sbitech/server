@@ -7,7 +7,7 @@ import com.sbitech.dto.PlayerSkillInfoDTO;
 import com.sbitech.entity.PlayerMatches;
 import com.sbitech.service.PdfScanService;
 import com.sbitech.service.PlayerMatchesService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,13 +20,13 @@ import static com.sbitech.utils.SimplePDFCreator.createSimplePDF;
 
 @CrossOrigin
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/playerMatches")
 public class PlayerMatchesController {
 
-    @Autowired
-    private PlayerMatchesService playerMatchesService;
-    @Autowired
-    private PdfScanService pdfScanService;
+    private final PlayerMatchesService playerMatchesService;
+
+    private final PdfScanService pdfScanService;
 
     @GetMapping("/getAll")
     public List<PlayerMatches> getAll() {

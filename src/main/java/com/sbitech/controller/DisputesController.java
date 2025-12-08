@@ -2,19 +2,19 @@ package com.sbitech.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.sbitech.dto.DisputesQueryDTO;
+import com.sbitech.service.DisputesService;
 import com.sbitech.vo.DisputesDetailVO;
 import com.sbitech.vo.DisputesVO;
-import com.sbitech.service.DisputesService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/disputes")
 public class DisputesController {
 
-    @Autowired
-    private DisputesService disputesService;
+    private final DisputesService disputesService;
 
     @PostMapping("/list")
     public PageInfo<DisputesVO> getDisputesList(@RequestBody DisputesQueryDTO queryDTO) {

@@ -5,19 +5,19 @@ import com.sbitech.dto.PasswordUpdateDTO;
 import com.sbitech.entity.PlayerInfo;
 import com.sbitech.mapper.PlayerInfoMapper;
 import com.sbitech.service.PlayerInfoService;
+import lombok.RequiredArgsConstructor;
 import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class PlayerInfoServiceImpl implements PlayerInfoService {
-    @Autowired
-    private PlayerInfoMapper playerInfoMapper;
 
-    @Override
-    public List<PlayerInfo> getUsers() {
+    private final PlayerInfoMapper playerInfoMapper;
+
+    public final List<PlayerInfo> getUsers() {
         return playerInfoMapper.getUsers();
     }
 

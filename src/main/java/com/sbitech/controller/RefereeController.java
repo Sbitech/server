@@ -3,7 +3,7 @@ package com.sbitech.controller;
 import com.sbitech.entity.Referee;
 import com.sbitech.service.RefereeService;
 import com.sbitech.utils.JwtUtil;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,13 +12,12 @@ import java.util.Map;
 
 @CrossOrigin
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/referee")
 public class RefereeController {
-    @Autowired
-    private RefereeService refereeService;
 
-    @Autowired
-    private JwtUtil jwtUtil;
+    private final RefereeService refereeService;
+    private final JwtUtil jwtUtil;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Referee referee) {

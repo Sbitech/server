@@ -2,18 +2,18 @@ package com.sbitech.controller;
 
 import com.sbitech.entity.Session;
 import com.sbitech.service.SessionService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
 @RestController
 @CrossOrigin
+@RequiredArgsConstructor
 @RequestMapping("/session")
 public class SessionController {
 
-    @Autowired
-    private SessionService sessionService;
+    private final SessionService sessionService;
 
     @PostMapping("/generate")
     public String generateSession(@RequestBody Session session) {

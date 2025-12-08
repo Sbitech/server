@@ -3,18 +3,19 @@ package com.sbitech.controller;
 import com.sbitech.dto.PasswordUpdateDTO;
 import com.sbitech.entity.PlayerInfo;
 import com.sbitech.service.PlayerInfoService;
+import lombok.RequiredArgsConstructor;
 import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @CrossOrigin
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/playerInfo")
 public class PlayerInfoController {
-    @Autowired
-    private PlayerInfoService playerInfoService;
+
+    private final PlayerInfoService playerInfoService;
 
     @GetMapping("/all")
     public List<PlayerInfo> getUsers(){
