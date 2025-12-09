@@ -3,19 +3,16 @@ package com.sbitech.service.impl;
 import com.sbitech.entity.Referee;
 import com.sbitech.mapper.RefereeMapper;
 import com.sbitech.service.RefereeService;
+import lombok.RequiredArgsConstructor;
 import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
+@RequiredArgsConstructor
 @Service
 public class RefereeServiceImpl implements RefereeService {
 
-    @Autowired
-    private RefereeMapper refereeMapper;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final RefereeMapper refereeMapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public Referee login(Referee referee) {

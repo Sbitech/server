@@ -12,23 +12,21 @@ import com.sbitech.mapper.OrderMapper;
 import com.sbitech.mapper.PlayerMatchesMapper;
 import com.sbitech.mapper.ScoresMapper;
 import com.sbitech.service.PlayerMatchesService;
+import lombok.RequiredArgsConstructor;
 import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Service
 public class PlayerMatchesServiceImpl implements PlayerMatchesService {
-    @Autowired
-    private PlayerMatchesMapper playerMatchesMapper;
-    @Autowired
-    private MoveMapper moveMapper;
-    @Autowired
-    private OrderMapper orderMapper;
-    @Autowired
-    private ScoresMapper scoresMapper;
+
+    private final PlayerMatchesMapper playerMatchesMapper;
+    private final MoveMapper moveMapper;
+    private final OrderMapper orderMapper;
+    private final ScoresMapper scoresMapper;
 
     @Override
     public List<PlayerMatches> getAll() {

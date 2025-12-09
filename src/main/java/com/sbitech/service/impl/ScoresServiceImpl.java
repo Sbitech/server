@@ -5,16 +5,16 @@ import com.sbitech.dto.RankingDTO;
 import com.sbitech.dto.UpdateScoreDTO;
 import com.sbitech.mapper.ScoresMapper;
 import com.sbitech.service.ScoresService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
-
+@RequiredArgsConstructor
 @Service
 public class ScoresServiceImpl implements ScoresService {
-    @Autowired
-    private ScoresMapper scoresMapper;
+
+    private final ScoresMapper scoresMapper;
 
     @Override
     public Boolean updateScore(UpdateScoreDTO updateScoreDTO) {

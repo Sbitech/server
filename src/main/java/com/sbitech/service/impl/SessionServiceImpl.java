@@ -3,20 +3,19 @@ package com.sbitech.service.impl;
 import com.sbitech.entity.Session;
 import com.sbitech.mapper.SessionMapper;
 import com.sbitech.service.SessionService;
+import lombok.RequiredArgsConstructor;
 import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
-
+@RequiredArgsConstructor
 @Service
 public class SessionServiceImpl implements SessionService {
 
-    @Autowired
-    private SessionMapper sessionMapper;
+    private final SessionMapper sessionMapper;
 
     @Override
     public String generateSession(Session session) {
