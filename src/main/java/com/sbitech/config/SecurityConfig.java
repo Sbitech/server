@@ -42,18 +42,16 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authz -> authz
-                                // 公开访问的端点
-                                .requestMatchers("/referee/login").permitAll()
-                                .requestMatchers("/user/login").permitAll()
-                                // 需要认证的端点
-                                .requestMatchers("/referee/**").hasAnyRole("REFEREE", "ADMIN")
-                                .requestMatchers("/admin/**").hasRole("ADMIN")
-                                // 其他请求需要认证
-//                        .anyRequest().authenticated()
-                                .anyRequest().permitAll()
-                );
-//                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
+                        // 公开访问的端点
+                        .requestMatchers("/referee/login").permitAll()
+                        .requestMatchers("/user/login").permitAll()
+                        // 需要认证的端点
+                        .requestMatchers("/referee/**").hasAnyRole("REFEREE", "ADMIN")
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        // 其他请求需要认证
+                        //.anyRequest().authenticated()
+                        .anyRequest().permitAll());
+                        //.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 

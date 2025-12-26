@@ -5,7 +5,6 @@ import com.sbitech.entity.DiffTransitionResult;
 import com.sbitech.mapper.DiffTransitionResultMapper;
 import com.sbitech.service.DiffTransitionResultService;
 import lombok.RequiredArgsConstructor;
-import lombok.val;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,27 +12,28 @@ import org.springframework.stereotype.Service;
 public class DiffTransitionResultServiceImpl implements DiffTransitionResultService {
 
     private final DiffTransitionResultMapper diffTransitionResultMapper;
-    public final boolean upDiffTransitionResult(DiffTransitionResult diffTransitionResult) {  //将视频解析结果编译持久化
 
-        val details = String.join(",", diffTransitionResult.getDetails());
-        val failedReason = String.join(",", diffTransitionResult.getFailedReason());
+    public boolean upDiffTransitionResult(DiffTransitionResult diffTransitionResult) {  //将视频解析结果编译持久化
+        if (diffTransitionResult == null) return false;
 
-        val diffTransitionResultDTO = new DiffTransitionResultDTO();
+        String details = diffTransitionResult.getDetails() == null ? "" : String.join(",", diffTransitionResult.getDetails());
+        String failedReason = diffTransitionResult.getFailedReason() == null ? "" : String.join(",", diffTransitionResult.getFailedReason());
 
-        diffTransitionResultDTO.setMoveId(diffTransitionResult.getMoveId());
-        diffTransitionResultDTO.setMoveName(diffTransitionResult.getMoveName());
-        diffTransitionResultDTO.setDifficultyScore(diffTransitionResult.getDifficultyScore());
-        diffTransitionResultDTO.setTransitionScore(diffTransitionResult.getTransitionScore());
-        diffTransitionResultDTO.setDetails(details);
-        diffTransitionResultDTO.setFailedReason(failedReason);
-        diffTransitionResultDTO.setMoveQualityScore(diffTransitionResult.getMoveQualityScore());
-        diffTransitionResultDTO.setMovePerformanceScore(diffTransitionResult.getMovePerformanceScore());
-        diffTransitionResultDTO.setJumpHeight(diffTransitionResult.getJumpHeight());
-        diffTransitionResultDTO.setTurnBodyAngle(diffTransitionResult.getTurnBodyAngle());
-        diffTransitionResultDTO.setHitLegAngle(diffTransitionResult.getHitLegAngle());
-        diffTransitionResultDTO.setRunupSteps(diffTransitionResult.getRunupSteps());
+        DiffTransitionResultDTO dto = new DiffTransitionResultDTO();
+        dto.setMoveId(diffTransitionResult.getMoveId());
+        dto.setMoveName(diffTransitionResult.getMoveName());
+        dto.setDifficultyScore(diffTransitionResult.getDifficultyScore());
+        dto.setTransitionScore(diffTransitionResult.getTransitionScore());
+        dto.setDetails(details);
+        dto.setFailedReason(failedReason);
+        dto.setMoveQualityScore(diffTransitionResult.getMoveQualityScore());
+        dto.setMovePerformanceScore(diffTransitionResult.getMovePerformanceScore());
+        dto.setJumpHeight(diffTransitionResult.getJumpHeight());
+        dto.setTurnBodyAngle(diffTransitionResult.getTurnBodyAngle());
+        dto.setHitLegAngle(diffTransitionResult.getHitLegAngle());
+        dto.setRunupSteps(diffTransitionResult.getRunupSteps());
 
-        return diffTransitionResultMapper.upDiffTransitionResult(diffTransitionResultDTO);
+        return diffTransitionResultMapper.upDiffTransitionResult(dto);
     }
 
     @Override

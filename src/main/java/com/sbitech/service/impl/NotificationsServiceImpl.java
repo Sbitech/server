@@ -8,8 +8,9 @@ import com.sbitech.service.NotificationsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,45 +20,37 @@ public class NotificationsServiceImpl implements NotificationsService {
 
     @Override
     public List<NotificationsDTO> getNotifications(Long refereeId) {    //通过裁判id获取对应的通知列表
-        List<NotificationsDTO> dto = new ArrayList<>();
         List<Notifications> notifications = notificationsMapper.getNotifications(refereeId);
-        for (Notifications notification : notifications) {
+        if (notifications == null || notifications.isEmpty()) return Collections.emptyList();
+
+        return notifications.stream().map(notification -> {
             NotificationsDTO notificationDTO = new NotificationsDTO();
             notificationDTO.setId(notification.getId());
             notificationDTO.setTitle(notification.getTitle());
             notificationDTO.setContent(notification.getContent());
             notificationDTO.setTime(notification.getTime());
-            if (notification.getType()==0){
-                notificationDTO.setType(NotificationsType.SYSTEM);
-            }else if (notification.getType()==1){
-                notificationDTO.setType(NotificationsType.TASK);
-            }else{
-                notificationDTO.setType(NotificationsType.APPEAL);
-            }
 
-            if (notification.getIsRead()==0){
-                notificationDTO.setIsRead(false);
-            }else if (notification.getIsRead()==1){
-                notificationDTO.setIsRead(true);
-            }
-            dto.add(notificationDTO);
-        }
-        return dto;
+            // 简洁地映射 type -> NotificationsType
+            notificationDTO.setType(
+                    notification.getType() == null ? NotificationsType.SYSTEM
+                            : (notification.getType() == 1 ? NotificationsType.TASK
+                            : (notification.getType() == 0 ? NotificationsType.SYSTEM : NotificationsType.APPEAL))
+            );
+
+            // 将 isRead 映射为 boolean（默认 false）
+            notificationDTO.setIsRead(notification.getIsRead() != null && notification.getIsRead() == 1);
+
+            return notificationDTO;
+        }).collect(Collectors.toList());
     }
 
     @Override
     public boolean markAsRead(Long notificationId) {    //标记已读
-        if(notificationsMapper.markAsRead(notificationId)){
-            return true;
-        }
-        return false;
+        return notificationsMapper.markAsRead(notificationId);
     }
 
     @Override
     public boolean markAsDeleted(Long notificationId) { //标记已删除（假删除，只是显示）
-        if(notificationsMapper.markAsDeleted(notificationId)){
-            return true;
-        }
-        return false;
+        return notificationsMapper.markAsDeleted(notificationId);
     }
 }
